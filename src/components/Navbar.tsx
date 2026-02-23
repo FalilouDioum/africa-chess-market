@@ -23,7 +23,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 shrink-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.png" alt="Africa Chess Market" className="h-10 sm:h-14 w-auto" />
+            <img src="/logo.png" alt="Africa Chess Market" className="h-10 sm:h-14 w-auto bg-white rounded-lg p-1" />
           </Link>
 
           {/* Desktop nav */}
