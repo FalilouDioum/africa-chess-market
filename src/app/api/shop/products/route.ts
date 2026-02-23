@@ -3,21 +3,26 @@ import { connectDB } from "@/lib/mongodb";
 import Product from "@/models/Product";
 
 export async function GET(req: NextRequest) {
-  await connectDB();
-  const { searchParams } = new URL(req.url);
-  const categorie = searchParams.get("categorie");
-  const search = searchParams.get("search");
+  try {
+    await connectDB();
+    const { searchParams } = new URL(req.url);
+    const categorie = searchParams.get("categorie");
+    const search = searchParams.get("search");
 
-  const filter: Record<string, unknown> = {};
-  if (categorie) filter.categorie = categorie;
-  if (search) {
-    filter.$or = [
-      { nom: { $regex: search, $options: "i" } },
-      { description: { $regex: search, $options: "i" } },
-      { codeArticle: { $regex: search, $options: "i" } },
-    ];
+    const filter: Record<string, unknown> = {};
+    if (categorie) filter.categorie = categorie;
+    if (search) {
+      filter.$or = [
+        { nom: { $regex: search, $options: "i" } },
+        { description: { $regex: search, $options: "i" } },
+        { codeArticle: { $regex: search, $options: "i" } },
+      ];
+    }
+
+    const products = await Product.find(filter).sort({ numero: 1 });
+    return NextResponse.json(products);
+  } catch (error) {
+    console.error("API /shop/products error:", error);
+    return NextResponse.json({ error: String(error) }, { status: 500 });
   }
-
-  const products = await Product.find(filter).sort({ numero: 1 });
-  return NextResponse.json(products);
 }

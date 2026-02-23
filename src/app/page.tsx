@@ -14,9 +14,14 @@ const categories = [
 ];
 
 async function getFeaturedProducts() {
-  await connectDB();
-  const products = await Product.find().sort({ numero: 1 }).limit(8).lean();
-  return JSON.parse(JSON.stringify(products));
+  try {
+    await connectDB();
+    const products = await Product.find().sort({ numero: 1 }).limit(8).lean();
+    return JSON.parse(JSON.stringify(products));
+  } catch (error) {
+    console.error("Failed to fetch products:", error);
+    return [];
+  }
 }
 
 export const dynamic = "force-dynamic";
