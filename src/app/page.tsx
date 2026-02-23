@@ -61,7 +61,7 @@ export default async function HomePage() {
                 href="/boutique"
                 className="bg-gold hover:bg-gold-dark active:bg-gold-dark text-forest-dark font-semibold px-6 py-3.5 sm:py-3 rounded-xl transition hover:scale-105 flex items-center justify-center gap-2 text-sm sm:text-base"
               >
-                Découvrir la boutique <ArrowRight className="w-4 h-4" />
+                Accédez à la boutique <ArrowRight className="w-4 h-4" />
               </Link>
               <a
                 href="https://wa.me/221771234455?text=Bonjour%20!%20Je%20souhaite%20en%20savoir%20plus%20sur%20vos%20produits."
