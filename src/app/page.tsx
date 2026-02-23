@@ -52,8 +52,8 @@ export default async function HomePage() {
           }} />
         </div>
         {heroImage && (
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] lg:w-[600px] lg:h-[600px] opacity-[0.08]">
-            <img src={heroImage} alt="" className="w-full h-full object-contain" />
+          <div className="absolute inset-0 opacity-[0.06]">
+            <img src={heroImage} alt="" className="w-full h-full object-cover" />
           </div>
         )}
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-20 sm:py-32">
