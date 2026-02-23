@@ -17,7 +17,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-forest text-white shadow-lg">
+    <header className="sticky top-0 z-50 bg-forest text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
