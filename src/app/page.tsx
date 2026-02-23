@@ -24,10 +24,36 @@ async function getFeaturedProducts() {
   }
 }
 
+async function getCategoryImages() {
+  try {
+    await connectDB();
+    const categoryImages: Record<string, string> = {};
+    for (const cat of categories) {
+      const product = await Product.findOne({
+        categorie: { $regex: new RegExp(`^${cat.slug}$`, "i") },
+        images: { $exists: true, $ne: [] },
+      }).select("images").lean();
+      if (product && (product as Record<string, unknown>).images) {
+        const images = (product as Record<string, unknown>).images as string[];
+        if (images.length > 0) {
+          categoryImages[cat.slug] = images[0];
+        }
+      }
+    }
+    return categoryImages;
+  } catch (error) {
+    console.error("Failed to fetch category images:", error);
+    return {};
+  }
+}
+
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const products = await getFeaturedProducts();
+  const [products, categoryImages] = await Promise.all([
+    getFeaturedProducts(),
+    getCategoryImages(),
+  ]);
 
   return (
     <div>
@@ -87,11 +113,25 @@ export default async function HomePage() {
             <Link
               key={cat.slug}
               href={`/boutique?categorie=${encodeURIComponent(cat.slug)}`}
-              className="group bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 text-center shadow-sm hover:shadow-lg border border-gray-100 transition-all hover:-translate-y-1 shrink-0 w-32 sm:w-auto"
+              className="group bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-sm hover:shadow-lg border border-gray-100 transition-all hover:-translate-y-1 shrink-0 w-36 sm:w-auto"
             >
-              <span className="text-3xl sm:text-4xl block mb-2 sm:mb-3">{cat.emoji}</span>
-              <h3 className="font-semibold text-gray-900 group-hover:text-forest transition text-sm sm:text-base">{cat.label}</h3>
-              <p className="text-[10px] sm:text-xs text-gray-500 mt-1 hidden sm:block">{cat.desc}</p>
+              <div className="aspect-square bg-cream relative overflow-hidden">
+                {categoryImages[cat.slug] ? (
+                  <img
+                    src={categoryImages[cat.slug]}
+                    alt={cat.label}
+                    className="w-full h-full object-contain p-3 group-hover:scale-110 transition-transform duration-300"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <span className="text-4xl sm:text-5xl">{cat.emoji}</span>
+                  </div>
+                )}
+              </div>
+              <div className="p-3 sm:p-4 text-center">
+                <h3 className="font-semibold text-gray-900 group-hover:text-forest transition text-sm sm:text-base">{cat.label}</h3>
+                <p className="text-[10px] sm:text-xs text-gray-500 mt-1 hidden sm:block">{cat.desc}</p>
+              </div>
             </Link>
           ))}
         </div>
