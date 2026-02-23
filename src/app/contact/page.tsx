@@ -6,21 +6,21 @@ export default function ContactPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-forest text-white py-16 sm:py-20">
+      <section className="bg-forest text-white py-12 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
-          <h1 className="text-3xl sm:text-5xl font-bold">Contactez-nous</h1>
-          <p className="text-white/70 mt-4 max-w-xl mx-auto text-lg">
+          <h1 className="text-2xl sm:text-5xl font-bold">Contactez-nous</h1>
+          <p className="text-white/70 mt-2 sm:mt-4 max-w-xl mx-auto text-sm sm:text-lg">
             Une question, une commande spéciale ? Nous sommes là pour vous.
           </p>
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
           {/* Infos de contact */}
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Nos coordonnées</h2>
-            <div className="space-y-6">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Nos coordonnées</h2>
+            <div className="space-y-4 sm:space-y-6">
               <a
                 href="https://wa.me/221771234455"
                 target="_blank"
@@ -72,7 +72,7 @@ export default function ContactPage() {
 
           {/* Formulaire WhatsApp */}
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Envoyez-nous un message</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Envoyez-nous un message</h2>
             <div className="bg-white rounded-2xl border border-gray-100 p-6 sm:p-8 shadow-sm">
               <p className="text-gray-500 text-sm mb-6">
                 Remplissez le formulaire ci-dessous et nous vous répondrons via WhatsApp dans les plus brefs délais.

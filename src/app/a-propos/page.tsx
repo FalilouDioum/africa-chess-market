@@ -5,19 +5,19 @@ export default function AProposPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-forest text-white py-16 sm:py-24">
+      <section className="bg-forest text-white py-12 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
-          <Crown className="w-12 h-12 text-gold mx-auto mb-4" />
-          <h1 className="text-3xl sm:text-5xl font-bold">À propos d&apos;Africa Chess Market</h1>
-          <p className="text-white/70 mt-4 max-w-2xl mx-auto text-lg">
+          <Crown className="w-10 h-10 sm:w-12 sm:h-12 text-gold mx-auto mb-3 sm:mb-4" />
+          <h1 className="text-2xl sm:text-5xl font-bold">À propos d&apos;Africa Chess Market</h1>
+          <p className="text-white/70 mt-2 sm:mt-4 max-w-2xl mx-auto text-sm sm:text-lg">
             Démocratiser les échecs en Afrique, un plateau à la fois.
           </p>
         </div>
       </section>
 
       {/* Notre histoire */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">Notre histoire</h2>
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 py-10 sm:py-20">
+        <h2 className="text-xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">Notre histoire</h2>
         <div className="prose prose-lg text-gray-600 space-y-4">
           <p>
             <strong>Africa Chess Market</strong> est née de la passion de deux amis, <strong>Falilou</strong> et <strong>Sidy</strong>, unis par leur amour des échecs et leur vision commune : rendre le matériel d&apos;échecs de qualité accessible à tous en Afrique.
@@ -32,10 +32,10 @@ export default function AProposPage() {
       </section>
 
       {/* Valeurs */}
-      <section className="bg-white py-16 sm:py-20">
+      <section className="bg-white py-10 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-12">Nos valeurs</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <h2 className="text-xl sm:text-3xl font-bold text-gray-900 text-center mb-8 sm:mb-12">Nos valeurs</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8">
             {[
               {
                 icon: Target,
@@ -69,8 +69,8 @@ export default function AProposPage() {
       </section>
 
       {/* Les fondateurs */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-12">Les fondateurs</h2>
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 py-10 sm:py-20">
+        <h2 className="text-xl sm:text-3xl font-bold text-gray-900 text-center mb-8 sm:mb-12">Les fondateurs</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           {[
             { name: "Falilou", role: "Co-fondateur & Directeur commercial", initial: "F", color: "bg-forest" },

@@ -78,13 +78,13 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
   const inStock = product.quantiteEnStock > 0;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-12">
       {/* Breadcrumb */}
-      <Link href="/boutique" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-forest mb-6 transition">
+      <Link href="/boutique" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-forest active:text-forest mb-4 sm:mb-6 transition py-1">
         <ArrowLeft className="w-4 h-4" /> Retour à la boutique
       </Link>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
         {/* Galerie */}
         <div>
           <div className="relative aspect-square bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
@@ -147,19 +147,19 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
           <span className="bg-forest/10 text-forest text-xs font-medium px-3 py-1 rounded-full">
             {product.categorie}
           </span>
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-3">
+          <h1 className="text-xl sm:text-3xl font-bold text-gray-900 mt-3">
             {product.nom}
           </h1>
-          <p className="text-sm text-gray-500 mt-1">Code : {product.codeArticle}</p>
+          <p className="text-xs sm:text-sm text-gray-500 mt-1">Code : {product.codeArticle}</p>
 
-          <p className="text-gray-600 mt-4 leading-relaxed">
+          <p className="text-sm sm:text-base text-gray-600 mt-3 sm:mt-4 leading-relaxed">
             {product.description}
           </p>
 
           {/* Prix */}
-          <div className="mt-6 bg-cream-dark rounded-2xl p-5">
+          <div className="mt-4 sm:mt-6 bg-cream-dark rounded-xl sm:rounded-2xl p-4 sm:p-5">
             <div className="flex items-baseline gap-3">
-              <span className="text-3xl font-bold text-forest">
+              <span className="text-2xl sm:text-3xl font-bold text-forest">
                 {product.prixVenteCFA ? formatCFA(product.prixVenteCFA) : "Sur demande"}
               </span>
             </div>
@@ -176,7 +176,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
               href={getWhatsAppLink(product)}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 w-full flex items-center justify-center gap-3 bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-xl transition hover:scale-[1.02] text-lg"
+              className="mt-4 sm:mt-6 w-full flex items-center justify-center gap-3 bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-bold py-3.5 sm:py-4 px-6 rounded-xl transition hover:scale-[1.02] text-base sm:text-lg"
             >
               <ShoppingCart className="w-5 h-5" />
               Commander via WhatsApp
@@ -184,14 +184,14 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
           ) : (
             <button
               disabled
-              className="mt-6 w-full flex items-center justify-center gap-3 bg-gray-300 text-gray-500 font-bold py-4 px-6 rounded-xl cursor-not-allowed text-lg"
+              className="mt-4 sm:mt-6 w-full flex items-center justify-center gap-3 bg-gray-300 text-gray-500 font-bold py-3.5 sm:py-4 px-6 rounded-xl cursor-not-allowed text-base sm:text-lg"
             >
               Indisponible
             </button>
           )}
 
           {/* Infos */}
-          <div className="mt-8 space-y-4">
+          <div className="mt-6 sm:mt-8 space-y-3 sm:space-y-4">
             <div className="flex items-start gap-3">
               <Truck className="w-5 h-5 text-gold mt-0.5 shrink-0" />
               <div>
@@ -212,9 +212,9 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
 
       {/* Produits similaires */}
       {similar.length > 0 && (
-        <div className="mt-16">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Produits similaires</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+        <div className="mt-10 sm:mt-16">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Produits similaires</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
             {similar.map((p) => (
               <ProductCard key={p._id} product={p as never} />
             ))}

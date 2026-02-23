@@ -41,23 +41,23 @@ export default async function HomePage() {
         <div className="absolute inset-0 opacity-[0.12]">
           <img src="/hero-chess.jpg" alt="" className="w-full h-full object-cover" />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-36 sm:pt-52 pb-20 sm:pb-32">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-28 sm:pt-52 pb-16 sm:pb-32">
           <div className="max-w-3xl">
-            <div className="flex items-center gap-2 mb-6">
-              <Crown className="w-5 h-5 text-gold" />
-              <span className="text-gold text-sm font-medium tracking-wider uppercase">Africa Chess Market</span>
+            <div className="flex items-center gap-2 mb-4 sm:mb-6">
+              <Crown className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
+              <span className="text-gold text-xs sm:text-sm font-medium tracking-wider uppercase">Africa Chess Market</span>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
               L&apos;excellence des échecs,
               <span className="text-gold"> livrée chez vous</span>
             </h1>
-            <p className="mt-6 text-lg text-white/70 max-w-xl leading-relaxed">
-              Découvrez notre sélection de matériel d&apos;échecs professionnel. Plateaux, pièces, pendules et accessoires de qualité supérieure, directement importés pour vous.
+            <p className="mt-4 sm:mt-6 text-base sm:text-lg text-white/70 max-w-xl leading-relaxed">
+              Découvrez notre sélection de matériel d&apos;échecs professionnel. Plateaux, pièces, pendules et accessoires de qualité supérieure.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Link
                 href="/boutique"
-                className="bg-gold hover:bg-gold-dark text-forest-dark font-semibold px-6 py-3 rounded-xl transition hover:scale-105 flex items-center gap-2"
+                className="bg-gold hover:bg-gold-dark active:bg-gold-dark text-forest-dark font-semibold px-6 py-3.5 sm:py-3 rounded-xl transition hover:scale-105 flex items-center justify-center gap-2 text-sm sm:text-base"
               >
                 Découvrir la boutique <ArrowRight className="w-4 h-4" />
               </Link>
@@ -65,7 +65,7 @@ export default async function HomePage() {
                 href="https://wa.me/221771234455?text=Bonjour%20!%20Je%20souhaite%20en%20savoir%20plus%20sur%20vos%20produits."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-xl transition hover:scale-105 flex items-center gap-2"
+                className="bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-semibold px-6 py-3.5 sm:py-3 rounded-xl transition hover:scale-105 flex items-center justify-center gap-2 text-sm sm:text-base"
               >
                 <MessageCircle className="w-4 h-4" /> Nous contacter
               </a>
@@ -75,33 +75,33 @@ export default async function HomePage() {
       </section>
 
       {/* Catégories */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Nos catégories</h2>
-          <p className="text-gray-500 mt-2">Tout le matériel d&apos;échecs dont vous avez besoin</p>
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
+        <div className="text-center mb-8 sm:mb-10">
+          <h2 className="text-2xl sm:text-4xl font-bold text-gray-900">Nos catégories</h2>
+          <p className="text-gray-500 mt-1 sm:mt-2 text-sm sm:text-base">Tout le matériel d&apos;échecs dont vous avez besoin</p>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="flex gap-3 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-3 lg:grid-cols-5 sm:gap-4 sm:overflow-visible">
           {categories.map((cat) => (
             <Link
               key={cat.slug}
               href={`/boutique?categorie=${encodeURIComponent(cat.slug)}`}
-              className="group bg-white rounded-2xl p-5 text-center shadow-sm hover:shadow-lg border border-gray-100 transition-all hover:-translate-y-1"
+              className="group bg-white rounded-xl sm:rounded-2xl p-4 sm:p-5 text-center shadow-sm hover:shadow-lg border border-gray-100 transition-all hover:-translate-y-1 shrink-0 w-32 sm:w-auto"
             >
-              <span className="text-4xl block mb-3">{cat.emoji}</span>
-              <h3 className="font-semibold text-gray-900 group-hover:text-forest transition">{cat.label}</h3>
-              <p className="text-xs text-gray-500 mt-1">{cat.desc}</p>
+              <span className="text-3xl sm:text-4xl block mb-2 sm:mb-3">{cat.emoji}</span>
+              <h3 className="font-semibold text-gray-900 group-hover:text-forest transition text-sm sm:text-base">{cat.label}</h3>
+              <p className="text-[10px] sm:text-xs text-gray-500 mt-1 hidden sm:block">{cat.desc}</p>
             </Link>
           ))}
         </div>
       </section>
 
       {/* Produits vedettes */}
-      <section className="bg-white py-16 sm:py-20">
+      <section className="bg-white py-12 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between mb-10">
+          <div className="flex items-center justify-between mb-6 sm:mb-10">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Nos produits</h2>
-              <p className="text-gray-500 mt-2">Les meilleurs articles de notre catalogue</p>
+              <h2 className="text-2xl sm:text-4xl font-bold text-gray-900">Nos produits</h2>
+              <p className="text-gray-500 mt-1 sm:mt-2 text-sm sm:text-base">Les meilleurs articles de notre catalogue</p>
             </div>
             <Link
               href="/boutique"
@@ -110,7 +110,7 @@ export default async function HomePage() {
               Voir tout <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
             {products.map((p: Record<string, unknown>) => (
               <ProductCard key={p._id as string} product={p as never} />
             ))}
@@ -127,12 +127,12 @@ export default async function HomePage() {
       </section>
 
       {/* Comment commander */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900">Comment commander ?</h2>
-          <p className="text-gray-500 mt-2">3 étapes simples pour recevoir votre matériel</p>
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-4xl font-bold text-gray-900">Comment commander ?</h2>
+          <p className="text-gray-500 mt-1 sm:mt-2 text-sm sm:text-base">3 étapes simples pour recevoir votre matériel</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8">
           {[
             { icon: Search, step: "01", title: "Parcourez notre catalogue", desc: "Explorez notre sélection de plateaux, pièces, pendules et accessoires d'échecs." },
             { icon: ShoppingCart, step: "02", title: "Commandez via WhatsApp", desc: "Cliquez sur le bouton Commander et envoyez-nous votre commande directement sur WhatsApp." },
@@ -154,11 +154,11 @@ export default async function HomePage() {
       </section>
 
       {/* Pourquoi nous choisir */}
-      <section className="bg-forest text-white py-16 sm:py-20">
+      <section className="bg-forest text-white py-12 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold">Pourquoi Africa Chess Market ?</h2>
-            <p className="text-white/60 mt-2">Votre satisfaction est notre priorité</p>
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-4xl font-bold">Pourquoi Africa Chess Market ?</h2>
+            <p className="text-white/60 mt-1 sm:mt-2 text-sm sm:text-base">Votre satisfaction est notre priorité</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             {[
@@ -182,18 +182,18 @@ export default async function HomePage() {
       </section>
 
       {/* CTA final */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
-        <div className="bg-gradient-to-br from-forest to-forest-light rounded-3xl p-8 sm:p-12 text-center text-white">
-          <Crown className="w-12 h-12 text-gold mx-auto mb-4" />
-          <h2 className="text-2xl sm:text-3xl font-bold mb-3">Prêt à élever votre jeu ?</h2>
-          <p className="text-white/70 max-w-md mx-auto mb-6">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
+        <div className="bg-gradient-to-br from-forest to-forest-light rounded-2xl sm:rounded-3xl p-6 sm:p-12 text-center text-white">
+          <Crown className="w-10 h-10 sm:w-12 sm:h-12 text-gold mx-auto mb-3 sm:mb-4" />
+          <h2 className="text-xl sm:text-3xl font-bold mb-2 sm:mb-3">Prêt à élever votre jeu ?</h2>
+          <p className="text-white/70 max-w-md mx-auto mb-5 sm:mb-6 text-sm sm:text-base">
             Commandez dès maintenant et recevez votre matériel d&apos;échecs de qualité professionnelle.
           </p>
           <a
             href="https://wa.me/221771234455?text=Bonjour%20!%20Je%20souhaite%20passer%20commande."
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-gold hover:bg-gold-dark text-forest-dark font-bold px-8 py-4 rounded-xl transition hover:scale-105 text-lg"
+            className="inline-flex items-center gap-2 bg-gold hover:bg-gold-dark active:bg-gold-dark text-forest-dark font-bold px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl transition hover:scale-105 text-base sm:text-lg"
           >
             Commander maintenant <ArrowRight className="w-5 h-5" />
           </a>

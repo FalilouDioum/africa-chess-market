@@ -3,8 +3,8 @@ import { Crown, MapPin, Phone, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-forest-dark text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <footer className="bg-forest-dark text-white" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">

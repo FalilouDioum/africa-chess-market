@@ -66,16 +66,16 @@ function BoutiqueContent() {
   });
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-      <div className="mb-8">
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">Boutique</h1>
-        <p className="text-gray-500 mt-2">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-12">
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-4xl font-bold text-gray-900">Boutique</h1>
+        <p className="text-gray-500 mt-1 sm:mt-2 text-sm sm:text-base">
           {products.length} produit{products.length > 1 ? "s" : ""} disponible{products.length > 1 ? "s" : ""}
         </p>
       </div>
 
-      <div className="flex flex-col sm:flex-row gap-4 mb-8">
-        <div className="relative flex-1 max-w-md">
+      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8">
+        <div className="relative flex-1 sm:max-w-md">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
           <input
             type="text"
@@ -88,7 +88,7 @@ function BoutiqueContent() {
         <div className="flex gap-2 items-center">
           <SlidersHorizontal className="w-4 h-4 text-gray-400 shrink-0" />
           <select
-            className="bg-white border border-gray-200 rounded-xl px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-forest/20"
+            className="bg-white border border-gray-200 rounded-xl px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-forest/20 flex-1 sm:flex-none"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
           >
@@ -100,7 +100,7 @@ function BoutiqueContent() {
         </div>
       </div>
 
-      <div className="flex gap-2 mb-8 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
+      <div className="flex gap-2 mb-6 sm:mb-8 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
         {categories.map((cat) => (
           <button
             key={cat.slug}
@@ -126,7 +126,7 @@ function BoutiqueContent() {
           <p className="text-gray-400 text-sm mt-2">Essayez d&apos;élargir vos critères de recherche</p>
         </div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
           {sorted.map((p) => (
             <ProductCard key={p._id} product={p as never} />
           ))}
