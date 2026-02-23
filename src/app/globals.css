@@ -9,7 +9,7 @@
   --color-gold-dark: #a8853a;
   --color-cream: #faf8f0;
   --color-cream-dark: #f0ece0;
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-poppins);
 }
 
 body {

@@ -147,16 +147,17 @@ export default async function HomePage() {
       </section>
 
       {/* Produits vedettes */}
-      <section className="bg-white py-12 sm:py-20">
+      <section className="bg-white py-14 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between mb-6 sm:mb-10">
+          <div className="flex items-end justify-between mb-10 sm:mb-14">
             <div>
-              <h2 className="text-2xl sm:text-4xl font-bold text-gray-900">Nos produits</h2>
-              <p className="text-gray-500 mt-1 sm:mt-2 text-sm sm:text-base">Les meilleurs articles de notre catalogue</p>
+              <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Catalogue</span>
+              <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mt-2">Nos produits</h2>
+              <div className="w-16 h-0.5 bg-gold mt-4" />
             </div>
             <Link
               href="/boutique"
-              className="hidden sm:flex items-center gap-2 text-forest font-medium hover:text-gold transition"
+              className="hidden sm:inline-flex items-center gap-2 text-forest font-semibold hover:text-gold transition border border-forest/20 hover:border-gold px-5 py-2.5 rounded-xl text-sm"
             >
               Voir tout <ArrowRight className="w-4 h-4" />
             </Link>
@@ -166,10 +167,10 @@ export default async function HomePage() {
               <ProductCard key={p._id as string} product={p as never} />
             ))}
           </div>
-          <div className="sm:hidden text-center mt-8">
+          <div className="sm:hidden text-center mt-10">
             <Link
               href="/boutique"
-              className="inline-flex items-center gap-2 bg-forest text-white px-6 py-3 rounded-xl font-medium"
+              className="inline-flex items-center gap-2 bg-forest text-white px-8 py-3.5 rounded-xl font-semibold text-sm"
             >
               Voir tous les produits <ArrowRight className="w-4 h-4" />
             </Link>
@@ -178,40 +179,49 @@ export default async function HomePage() {
       </section>
 
       {/* Comment commander */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
-        <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-4xl font-bold text-gray-900">Comment commander ?</h2>
-          <p className="text-gray-500 mt-1 sm:mt-2 text-sm sm:text-base">3 étapes simples pour recevoir votre matériel</p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8">
-          {[
-            { icon: Search, step: "01", title: "Parcourez notre catalogue", desc: "Explorez notre sélection de plateaux, pièces, pendules et accessoires d'échecs." },
-            { icon: ShoppingCart, step: "02", title: "Commandez via WhatsApp", desc: "Cliquez sur le bouton Commander et envoyez-nous votre commande directement sur WhatsApp." },
-            { icon: Package, step: "03", title: "Recevez votre commande", desc: "Nous préparons et livrons votre matériel d'échecs à l'adresse de votre choix." },
-          ].map((item) => {
-            const Icon = item.icon;
-            return (
-              <div key={item.step} className="relative bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-100 text-center">
-                <span className="text-6xl font-black text-forest/5 absolute top-4 right-6">{item.step}</span>
-                <div className="w-14 h-14 bg-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <Icon className="w-7 h-7 text-gold" />
+      <section className="bg-cream py-14 sm:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-10 sm:mb-14">
+            <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Processus</span>
+            <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mt-2">Comment commander ?</h2>
+            <div className="w-16 h-0.5 bg-gold mx-auto mt-4" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+            {[
+              { icon: Search, step: "01", title: "Parcourez notre catalogue", desc: "Explorez notre sélection de plateaux, pièces, pendules et accessoires d'échecs." },
+              { icon: ShoppingCart, step: "02", title: "Commandez via WhatsApp", desc: "Cliquez sur le bouton Commander et envoyez-nous votre commande directement sur WhatsApp." },
+              { icon: Package, step: "03", title: "Recevez votre commande", desc: "Nous préparons et livrons votre matériel d'échecs à l'adresse de votre choix." },
+            ].map((item) => {
+              const Icon = item.icon;
+              return (
+                <div key={item.step} className="relative bg-white rounded-2xl p-6 sm:p-10 text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gold/10">
+                  <span className="text-7xl sm:text-8xl font-extrabold text-forest/[0.03] absolute top-2 right-4 sm:top-4 sm:right-6 leading-none">{item.step}</span>
+                  <div className="w-16 h-16 bg-gradient-to-br from-gold/20 to-gold/5 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                    <Icon className="w-8 h-8 text-gold" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-3">{item.title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </section>
 
       {/* Pourquoi nous choisir */}
-      <section className="bg-forest text-white py-12 sm:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-4xl font-bold">Pourquoi Africa Chess Market ?</h2>
-            <p className="text-white/60 mt-1 sm:mt-2 text-sm sm:text-base">Votre satisfaction est notre priorité</p>
+      <section className="bg-forest text-white py-14 sm:py-24 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8a455' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }} />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-10 sm:mb-14">
+            <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Nos engagements</span>
+            <h2 className="text-2xl sm:text-4xl font-bold mt-2">Pourquoi Africa Chess Market ?</h2>
+            <div className="w-16 h-0.5 bg-gold mx-auto mt-4" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
             {[
               { icon: ShieldCheck, title: "Qualité garantie", desc: "Matériel professionnel importé directement des meilleurs fabricants. Pièces lestées, plateaux résistants." },
               { icon: Truck, title: "Livraison rapide", desc: "Livraison dans tout le Sénégal et en Afrique de l'Ouest. Suivi de commande en temps réel." },
@@ -219,11 +229,11 @@ export default async function HomePage() {
             ].map((item) => {
               const Icon = item.icon;
               return (
-                <div key={item.title} className="text-center">
-                  <div className="w-16 h-16 bg-gold/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <div key={item.title} className="bg-white/[0.06] backdrop-blur-sm rounded-2xl p-6 sm:p-10 text-center border border-white/10 hover:border-gold/30 transition-all duration-300">
+                  <div className="w-16 h-16 bg-gold/15 rounded-2xl flex items-center justify-center mx-auto mb-5">
                     <Icon className="w-8 h-8 text-gold" />
                   </div>
-                  <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+                  <h3 className="text-lg font-bold mb-3">{item.title}</h3>
                   <p className="text-sm text-white/60 leading-relaxed">{item.desc}</p>
                 </div>
               );
@@ -233,21 +243,30 @@ export default async function HomePage() {
       </section>
 
       {/* CTA final */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
-        <div className="bg-gradient-to-br from-forest to-forest-light rounded-2xl sm:rounded-3xl p-6 sm:p-12 text-center text-white">
-          <Crown className="w-10 h-10 sm:w-12 sm:h-12 text-gold mx-auto mb-3 sm:mb-4" />
-          <h2 className="text-xl sm:text-3xl font-bold mb-2 sm:mb-3">Prêt à élever votre jeu ?</h2>
-          <p className="text-white/70 max-w-md mx-auto mb-5 sm:mb-6 text-sm sm:text-base">
-            Commandez dès maintenant et recevez votre matériel d&apos;échecs de qualité professionnelle.
-          </p>
-          <a
-            href="https://wa.me/221771234455?text=Bonjour%20!%20Je%20souhaite%20passer%20commande."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-gold hover:bg-gold-dark active:bg-gold-dark text-forest-dark font-bold px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl transition hover:scale-105 text-base sm:text-lg"
-          >
-            Commander maintenant <ArrowRight className="w-5 h-5" />
-          </a>
+      <section className="bg-cream py-14 sm:py-24">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="relative bg-forest rounded-3xl p-8 sm:p-16 text-center text-white overflow-hidden">
+            <div className="absolute inset-0 opacity-10">
+              <img src="/hero-chess.jpg" alt="" className="w-full h-full object-cover" />
+            </div>
+            <div className="relative">
+              <div className="w-16 h-16 bg-gold/15 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                <Crown className="w-9 h-9 text-gold" />
+              </div>
+              <h2 className="text-xl sm:text-3xl font-bold mb-3">Prêt à élever votre jeu ?</h2>
+              <p className="text-white/60 max-w-md mx-auto mb-8 text-sm sm:text-base leading-relaxed">
+                Commandez dès maintenant et recevez votre matériel d&apos;échecs de qualité professionnelle.
+              </p>
+              <a
+                href="https://wa.me/221771234455?text=Bonjour%20!%20Je%20souhaite%20passer%20commande."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-gold hover:bg-gold-dark active:bg-gold-dark text-forest-dark font-bold px-8 py-4 rounded-xl transition hover:scale-105 text-base sm:text-lg"
+              >
+                Commander maintenant <ArrowRight className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </div>
