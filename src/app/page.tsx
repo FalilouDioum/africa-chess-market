@@ -48,9 +48,11 @@ export default async function HomePage() {
               <span className="text-gold text-xs sm:text-sm font-medium tracking-wider uppercase">Africa Chess Market</span>
             </div>
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              L&apos;excellence des échecs,
-              <span className="text-gold"> livrée chez vous</span>
+              Découvrez le jeu des Rois
             </h1>
+            <p className="text-xl sm:text-3xl lg:text-4xl font-bold text-gold mt-2">
+              au Sénégal
+            </p>
             <p className="mt-4 sm:mt-6 text-base sm:text-lg text-white/70 max-w-xl leading-relaxed">
               Découvrez notre sélection de matériel d&apos;échecs professionnel. Plateaux, pièces, pendules et accessoires de qualité supérieure.
             </p>
