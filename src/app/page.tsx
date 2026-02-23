@@ -103,37 +103,46 @@ export default async function HomePage() {
       </section>
 
       {/* Catégories */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
-        <div className="text-center mb-8 sm:mb-10">
-          <h2 className="text-2xl sm:text-4xl font-bold text-gray-900">Nos catégories</h2>
-          <p className="text-gray-500 mt-1 sm:mt-2 text-sm sm:text-base">Tout le matériel d&apos;échecs dont vous avez besoin</p>
-        </div>
-        <div className="flex gap-3 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-3 lg:grid-cols-5 sm:gap-4 sm:overflow-visible">
-          {categories.map((cat) => (
-            <Link
-              key={cat.slug}
-              href={`/boutique?categorie=${encodeURIComponent(cat.slug)}`}
-              className="group bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-sm hover:shadow-lg border border-gray-100 transition-all hover:-translate-y-1 shrink-0 w-36 sm:w-auto"
-            >
-              <div className="aspect-square bg-cream relative overflow-hidden">
-                {categoryImages[cat.slug] ? (
-                  <img
-                    src={categoryImages[cat.slug]}
-                    alt={cat.label}
-                    className="w-full h-full object-contain p-3 group-hover:scale-110 transition-transform duration-300"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center">
-                    <span className="text-4xl sm:text-5xl">{cat.emoji}</span>
-                  </div>
-                )}
-              </div>
-              <div className="p-3 sm:p-4 text-center">
-                <h3 className="font-semibold text-gray-900 group-hover:text-forest transition text-sm sm:text-base">{cat.label}</h3>
-                <p className="text-[10px] sm:text-xs text-gray-500 mt-1 hidden sm:block">{cat.desc}</p>
-              </div>
-            </Link>
-          ))}
+      <section className="bg-forest-dark py-14 sm:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-10 sm:mb-14">
+            <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Collection</span>
+            <h2 className="text-2xl sm:text-4xl font-bold text-white mt-2">Nos catégories</h2>
+            <div className="w-16 h-0.5 bg-gold mx-auto mt-4" />
+          </div>
+          <div className="flex gap-4 overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-3 lg:grid-cols-5 sm:gap-5 sm:overflow-visible">
+            {categories.map((cat) => (
+              <Link
+                key={cat.slug}
+                href={`/boutique?categorie=${encodeURIComponent(cat.slug)}`}
+                className="group relative rounded-2xl overflow-hidden shrink-0 w-40 sm:w-auto aspect-[3/4] sm:aspect-[3/4]"
+              >
+                {/* Background image */}
+                <div className="absolute inset-0 bg-forest">
+                  {categoryImages[cat.slug] ? (
+                    <img
+                      src={categoryImages[cat.slug]}
+                      alt={cat.label}
+                      className="w-full h-full object-contain p-4 sm:p-6 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <span className="text-5xl sm:text-6xl opacity-50 group-hover:opacity-80 transition-opacity duration-300">{cat.emoji}</span>
+                    </div>
+                  )}
+                </div>
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                {/* Gold border on hover */}
+                <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-gold/60 transition-colors duration-300" />
+                {/* Text */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
+                  <h3 className="font-bold text-white text-sm sm:text-lg group-hover:text-gold transition-colors duration-300">{cat.label}</h3>
+                  <p className="text-[10px] sm:text-xs text-white/60 mt-1 leading-snug">{cat.desc}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
