@@ -38,7 +38,7 @@ export default function Navbar() {
       <header
         className={`sticky top-0 z-50 text-white transition-all duration-500 ${
           !isHome
-            ? "bg-forest shadow-lg border-b border-gold/20"
+            ? "bg-forest border-b border-transparent"
             : scrolled || open
               ? "bg-forest/95 backdrop-blur-xl shadow-lg border-b border-gold/20"
               : "bg-transparent border-b border-transparent"
