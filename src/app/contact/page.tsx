@@ -86,7 +86,7 @@ export default function ContactPage() {
               <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Message</span>
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mt-2 mb-2">Envoyez-nous un message</h2>
               <div className="w-16 h-0.5 bg-gold mb-8" />
-              <div className="bg-cream rounded-2xl border border-gold/10 p-6 sm:p-8 shadow-md">
+              <div className="bg-cream rounded-2xl border border-gold/10 p-6 sm:p-8 shadow-md hover:shadow-lg transition-shadow duration-300">
                 <p className="text-gray-500 text-sm mb-6 leading-relaxed">
                   Remplissez le formulaire ci-dessous et nous vous répondrons via WhatsApp dans les plus brefs délais.
                 </p>
@@ -102,7 +102,7 @@ export default function ContactPage() {
                     <input
                       type="text"
                       id="contact-name"
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-forest/20 focus:border-forest transition min-h-[44px]"
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold transition min-h-[44px]"
                       placeholder="Prénom et nom"
                     />
                   </div>
@@ -111,7 +111,7 @@ export default function ContactPage() {
                     <input
                       type="tel"
                       id="contact-phone"
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-forest/20 focus:border-forest transition min-h-[44px]"
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold transition min-h-[44px]"
                       placeholder="+221 7X XXX XX XX"
                     />
                   </div>
@@ -120,7 +120,7 @@ export default function ContactPage() {
                     <textarea
                       id="contact-message"
                       rows={4}
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-forest/20 focus:border-forest resize-none transition"
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold resize-none transition"
                       placeholder="Décrivez votre besoin..."
                     />
                   </div>

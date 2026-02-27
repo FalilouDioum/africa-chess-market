@@ -34,16 +34,16 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`sticky top-0 z-50 text-white transition-all duration-300 ${
-          scrolled || open ? "bg-forest/95 backdrop-blur-md shadow-lg" : "bg-transparent"
+        className={`sticky top-0 z-50 text-white transition-all duration-500 ${
+          scrolled || open ? "bg-forest/95 backdrop-blur-xl shadow-lg border-b border-gold/20" : "bg-transparent border-b border-transparent"
         }`}
         style={{ paddingTop: "env(safe-area-inset-top)" }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-14 sm:h-20">
-            <Link href="/" className="flex items-center gap-2 sm:gap-3 shrink-0 min-h-[44px] items-center">
+            <Link href="/" className="flex items-center gap-2 sm:gap-3 shrink-0 min-h-[44px] items-center group">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo.png" alt="Africa Chess Market" className="h-9 sm:h-14 w-auto bg-white rounded-lg p-0.5 sm:p-1" />
+              <img src="/logo.png" alt="Africa Chess Market" className="h-9 sm:h-14 w-auto bg-white rounded-lg p-0.5 sm:p-1 transition-shadow duration-300 group-hover:shadow-[0_0_15px_rgba(200,164,85,0.4)]" />
             </Link>
 
             <nav className="hidden md:flex items-center gap-1">
@@ -51,10 +51,10 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-4 py-2.5 rounded-lg text-sm font-medium transition-colors min-h-[44px] flex items-center ${
+                  className={`px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 min-h-[44px] flex items-center relative ${
                     pathname === link.href
-                      ? "bg-gold text-forest-dark"
-                      : "text-white/80 hover:text-white hover:bg-white/10"
+                      ? "text-gold after:absolute after:bottom-0.5 after:left-3 after:right-3 after:h-0.5 after:bg-gold after:rounded-full"
+                      : "text-white/70 hover:text-white after:absolute after:bottom-0.5 after:left-3 after:right-3 after:h-0.5 after:bg-gold/0 hover:after:bg-gold/40 after:rounded-full after:transition-colors after:duration-300"
                   }`}
                 >
                   {link.label}

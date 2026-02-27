@@ -134,11 +134,25 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                   key={i}
                   onClick={() => setCurrentImg(i)}
                   className={`w-16 h-16 rounded-lg overflow-hidden border-2 shrink-0 transition ${
-                    i === currentImg ? "border-forest" : "border-gray-200 hover:border-gray-400"
+                    i === currentImg ? "border-gold shadow-sm" : "border-gray-200 hover:border-gold/50"
                   }`}
                 >
                   <img src={`/api/shop/images/${product._id}?idx=${i}`} alt="" className="w-full h-full object-cover" loading="lazy" />
                 </button>
+              ))}
+            </div>
+          )}
+          {/* Mobile dot indicators */}
+          {imageCount > 1 && (
+            <div className="flex sm:hidden justify-center gap-2 mt-3">
+              {Array.from({ length: imageCount }, (_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentImg(i)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    i === currentImg ? "bg-gold w-6" : "bg-gray-300 w-2"
+                  }`}
+                />
               ))}
             </div>
           )}
@@ -161,7 +175,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
           </p>
 
           {/* Prix */}
-          <div className="mt-4 sm:mt-6 bg-cream-dark rounded-xl sm:rounded-2xl p-4 sm:p-5">
+          <div className="mt-4 sm:mt-6 bg-cream-dark rounded-xl sm:rounded-2xl p-4 sm:p-5 border-l-4 border-gold">
             <div className="flex items-baseline gap-3">
               <span className="text-2xl sm:text-3xl font-bold text-forest">
                 {product.prixVenteCFA ? formatCFA(product.prixVenteCFA) : "Sur demande"}
@@ -180,7 +194,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
               href={getWhatsAppLink(product)}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 sm:mt-6 w-full flex items-center justify-center gap-3 bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-bold py-3.5 sm:py-4 px-6 rounded-xl transition hover:scale-[1.02] text-base sm:text-lg"
+              className="mt-4 sm:mt-6 w-full flex items-center justify-center gap-3 bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-bold py-3.5 sm:py-4 px-6 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(34,197,94,0.3)] text-base sm:text-lg"
             >
               <ShoppingCart className="w-5 h-5" />
               Commander via WhatsApp

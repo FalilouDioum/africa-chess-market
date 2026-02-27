@@ -75,6 +75,7 @@ export default async function HomePage() {
         <div className="absolute inset-0 opacity-[0.12]">
           <img src="/hero-chess.jpg" alt="" className="w-full h-full object-cover" />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-br from-forest-dark/40 via-transparent to-forest/60" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-20 sm:pt-52 pb-12 sm:pb-32">
           <div className="max-w-3xl hero-fade">
             <div className="flex items-center gap-2 mb-4 sm:mb-6">
@@ -84,7 +85,7 @@ export default async function HomePage() {
             <h1 className="text-2xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
               Découvrez le jeu des Rois
             </h1>
-            <p className="text-lg sm:text-3xl lg:text-4xl font-bold text-gold mt-1 sm:mt-2">
+            <p className="text-lg sm:text-3xl lg:text-4xl font-bold mt-1 sm:mt-2 gold-shimmer">
               au Sénégal
             </p>
             <p className="mt-3 sm:mt-6 text-sm sm:text-lg text-white/70 max-w-xl leading-relaxed">
@@ -93,7 +94,7 @@ export default async function HomePage() {
             <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Link
                 href="/boutique"
-                className="bg-gold hover:bg-gold-dark active:bg-gold-dark text-forest-dark font-semibold px-6 py-3.5 sm:py-3 rounded-xl transition hover:scale-105 flex items-center justify-center gap-2 text-sm sm:text-base"
+                className="bg-gold hover:bg-gold-dark active:bg-gold-dark text-forest-dark font-semibold px-6 py-3.5 sm:py-3 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(200,164,85,0.35)] flex items-center justify-center gap-2 text-sm sm:text-base"
               >
                 Accédez à la boutique <ArrowRight className="w-4 h-4" />
               </Link>
@@ -204,7 +205,9 @@ export default async function HomePage() {
             </div>
           </FadeIn>
           <FadeIn animation="stagger-children">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 relative">
+              {/* Connecting line (desktop only) */}
+              <div className="hidden sm:block absolute top-[4.5rem] left-[16.67%] right-[16.67%] gold-gradient-line" />
               {[
                 { icon: Search, step: "01", title: "Parcourez notre catalogue", desc: "Explorez notre sélection de plateaux, pièces, pendules et accessoires d'échecs." },
                 { icon: ShoppingCart, step: "02", title: "Commandez via WhatsApp", desc: "Cliquez sur le bouton Commander et envoyez-nous votre commande directement sur WhatsApp." },
@@ -212,9 +215,9 @@ export default async function HomePage() {
               ].map((item) => {
                 const Icon = item.icon;
                 return (
-                  <div key={item.step} className="relative bg-white rounded-2xl p-6 sm:p-10 text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gold/10">
+                  <div key={item.step} className="relative bg-white rounded-2xl p-6 sm:p-10 text-center shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 border border-gold/10">
                     <span className="text-7xl sm:text-8xl font-extrabold text-forest/[0.03] absolute top-2 right-4 sm:top-4 sm:right-6 leading-none">{item.step}</span>
-                    <div className="w-16 h-16 bg-gradient-to-br from-gold/20 to-gold/5 rounded-2xl flex items-center justify-center mx-auto mb-5">
+                    <div className="w-16 h-16 bg-gradient-to-br from-gold/20 to-gold/5 rounded-2xl flex items-center justify-center mx-auto mb-5 relative z-10 ring-4 ring-cream">
                       <Icon className="w-8 h-8 text-gold" />
                     </div>
                     <h3 className="text-lg font-bold text-gray-900 mb-3">{item.title}</h3>
@@ -251,7 +254,7 @@ export default async function HomePage() {
               ].map((item) => {
                 const Icon = item.icon;
                 return (
-                  <div key={item.title} className="bg-white/[0.06] backdrop-blur-sm rounded-2xl p-6 sm:p-10 text-center border border-white/10 hover:border-gold/30 transition-all duration-300">
+                  <div key={item.title} className="bg-white/[0.06] backdrop-blur-sm rounded-2xl p-6 sm:p-10 text-center border border-white/10 hover:border-gold/30 transition-all duration-500 border-t-2 border-t-gold/40 hover:border-t-gold">
                     <div className="w-16 h-16 bg-gold/15 rounded-2xl flex items-center justify-center mx-auto mb-5">
                       <Icon className="w-8 h-8 text-gold" />
                     </div>
@@ -285,7 +288,7 @@ export default async function HomePage() {
                   href="https://wa.me/221771234455?text=Bonjour%20!%20Je%20souhaite%20passer%20commande."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-gold hover:bg-gold-dark active:bg-gold-dark text-forest-dark font-bold px-8 py-4 rounded-xl transition hover:scale-105 text-base sm:text-lg"
+                  className="inline-flex items-center gap-2 bg-gold hover:bg-gold-dark active:bg-gold-dark text-forest-dark font-bold px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(200,164,85,0.4)] text-base sm:text-lg"
                 >
                   Commander maintenant <ArrowRight className="w-5 h-5" />
                 </a>

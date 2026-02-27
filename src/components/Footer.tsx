@@ -3,7 +3,8 @@ import { Crown, MapPin, Phone, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-forest-dark text-white" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
+    <footer className="bg-forest-dark text-white relative" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
+      <div className="gold-gradient-line" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Brand */}
@@ -77,7 +78,7 @@ export default function Footer() {
           <p className="text-xs text-white/30 tracking-wide">
             &copy; {new Date().getFullYear()} Africa Chess Market SARL. Tous droits réservés.
           </p>
-          <p className="text-xs text-white/30 tracking-wide">
+          <p className="text-xs text-gold/40 tracking-wider font-medium">
             Petit Nihal Chess &mdash; Falilou & Sidy
           </p>
         </div>

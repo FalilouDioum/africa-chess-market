@@ -104,7 +104,7 @@ export default function AProposPage() {
                 { name: "Falilou", role: "Co-fondateur & Directeur commercial", initial: "F", color: "bg-forest" },
                 { name: "Sidy", role: "Co-fondateur & Directeur des opérations", initial: "S", color: "bg-gold-dark" },
               ].map((person) => (
-                <div key={person.name} className="bg-cream rounded-2xl p-8 sm:p-10 text-center border border-gold/10 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div key={person.name} className="bg-cream rounded-2xl p-8 sm:p-10 text-center border border-gold/10 hover:border-gold/30 shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 border-t-2 border-t-gold/40">
                   <div className={`w-20 h-20 ${person.color} rounded-full flex items-center justify-center mx-auto mb-5 text-white text-2xl font-bold shadow-lg`}>
                     {person.initial}
                   </div>

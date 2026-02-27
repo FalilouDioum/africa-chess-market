@@ -15,6 +15,18 @@ export const metadata: Metadata = {
   title: "Africa Chess Market - Boutique d'échecs en ligne",
   description: "Achetez vos plateaux, pièces, pendules et accessoires d'échecs de qualité. Livraison au Sénégal et en Afrique. Petit Nihal Chess.",
   keywords: "échecs, chess, Sénégal, Afrique, plateau, pièces, pendule, boutique",
+  openGraph: {
+    title: "Africa Chess Market - Matériel d'échecs premium en Afrique",
+    description: "Plateaux, pièces, pendules et accessoires d'échecs de qualité professionnelle. Livraison au Sénégal et en Afrique de l'Ouest.",
+    type: "website",
+    locale: "fr_FR",
+    siteName: "Africa Chess Market",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Africa Chess Market",
+    description: "Matériel d'échecs premium en Afrique",
+  },
 };
 
 export default function RootLayout({

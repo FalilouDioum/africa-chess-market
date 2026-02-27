@@ -22,6 +22,72 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Premium scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-forest-light);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+/* Gold text selection */
+::selection {
+  background: var(--color-gold);
+  color: var(--color-forest-dark);
+}
+
+/* Premium focus ring */
+*:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Gold shimmer animation */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-gold) 0%,
+    var(--color-gold-light) 25%,
+    #fff 50%,
+    var(--color-gold-light) 75%,
+    var(--color-gold) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+/* Gold gradient line separator */
+.gold-gradient-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+
 /* Fade-in animations */
 @keyframes fadeInUp {
   from {

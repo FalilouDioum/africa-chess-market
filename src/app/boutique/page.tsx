@@ -75,7 +75,7 @@ function BoutiqueContent() {
           <h1 className="text-2xl sm:text-4xl font-bold text-white mt-2">Boutique</h1>
           <div className="w-16 h-0.5 bg-gold mt-4" />
           <p className="text-white/60 mt-3 text-sm sm:text-base">
-            {products.length} produit{products.length > 1 ? "s" : ""} disponible{products.length > 1 ? "s" : ""}
+            <span className="text-gold font-semibold">{products.length}</span> produit{products.length > 1 ? "s" : ""} disponible{products.length > 1 ? "s" : ""}
           </p>
         </div>
       </section>
@@ -117,8 +117,8 @@ function BoutiqueContent() {
                 onClick={() => setFilterCat(cat.slug)}
                 className={`px-5 py-3 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 min-h-[44px] ${
                   filterCat === cat.slug
-                    ? "bg-forest text-white shadow-md"
-                    : "bg-white text-gray-600 border border-gray-200 hover:border-gold hover:text-forest active:bg-gray-50"
+                    ? "bg-forest text-white shadow-md ring-2 ring-gold/30 ring-offset-2 ring-offset-cream"
+                    : "bg-white text-gray-600 border border-gray-200 hover:border-gold/50 hover:text-forest active:bg-gray-50"
                 }`}
               >
                 {cat.label}

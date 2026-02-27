@@ -38,26 +38,27 @@ export default function ProductCard({ product }: { product: Product }) {
   const imgSrc = getImageSrc(product);
 
   return (
-    <div className="group bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col">
+    <div className="group bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-gold/30 flex flex-col hover:-translate-y-1">
       <Link href={`/boutique/${product._id}`} className="relative block aspect-square overflow-hidden bg-cream-dark">
         {imgSrc ? (
           <img
             src={imgSrc}
             alt={product.nom}
             loading="lazy"
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 saturate-[0.85] group-hover:saturate-100"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
             <Crown className="w-12 h-12 sm:w-16 sm:h-16 text-gold/30" />
           </div>
         )}
-        <span className="absolute top-2 left-2 sm:top-3 sm:left-3 bg-forest/90 text-white text-[10px] sm:text-xs px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full backdrop-blur-sm">
+        <span className="absolute top-2 left-2 sm:top-3 sm:left-3 bg-forest/90 text-white text-[10px] sm:text-xs px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full backdrop-blur-sm flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 bg-gold rounded-full" />
           {product.categorie}
         </span>
         {!inStock && (
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-            <span className="bg-red-500 text-white text-xs sm:text-sm font-semibold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/10 flex items-center justify-center backdrop-saturate-0">
+            <span className="bg-white/90 text-gray-900 text-[10px] sm:text-xs font-semibold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full tracking-wide uppercase">
               Rupture de stock
             </span>
           </div>
@@ -76,7 +77,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
         <div className="mt-2 sm:mt-3 flex items-end justify-between gap-2 sm:gap-3">
           <div className="min-w-0">
-            <p className="text-sm sm:text-lg font-bold text-forest truncate">
+            <p className="text-base sm:text-xl font-bold text-forest truncate tracking-tight">
               {product.prixVenteCFA ? formatCFA(product.prixVenteCFA) : "Sur demande"}
             </p>
             {inStock && (
