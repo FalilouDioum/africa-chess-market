@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState, useCallback, Suspense } from "react";
+import { useEffect, useState, useCallback, useRef, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
 import FadeIn from "@/components/FadeIn";
-import { Search, SlidersHorizontal } from "lucide-react";
+import { Search, SlidersHorizontal, X } from "lucide-react";
 
 interface Product {
   _id: string;
@@ -34,22 +34,31 @@ function BoutiqueContent() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
   const [filterCat, setFilterCat] = useState(catParam);
   const [sortBy, setSortBy] = useState("numero");
+  const [inStockOnly, setInStockOnly] = useState(false);
+  const searchRef = useRef<HTMLInputElement>(null);
+
+  // Debounce search: wait 350ms after typing stops
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedSearch(search), 350);
+    return () => clearTimeout(timer);
+  }, [search]);
 
   const fetchProducts = useCallback(async () => {
     setLoading(true);
-    let url = "/api/shop/products";
     const params = new URLSearchParams();
     if (filterCat) params.set("categorie", filterCat);
-    if (search) params.set("search", search);
-    if (params.toString()) url += "?" + params.toString();
+    if (debouncedSearch) params.set("search", debouncedSearch);
+    if (inStockOnly) params.set("inStock", "1");
+    const url = "/api/shop/products" + (params.toString() ? "?" + params.toString() : "");
 
     const res = await fetch(url);
     const data = await res.json();
     setProducts(data);
     setLoading(false);
-  }, [filterCat, search]);
+  }, [filterCat, debouncedSearch, inStockOnly]);
 
   useEffect(() => {
     fetchProducts();
@@ -86,17 +95,27 @@ function BoutiqueContent() {
             <div className="relative flex-1 sm:max-w-md">
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
+                ref={searchRef}
                 type="text"
                 placeholder="Rechercher un produit..."
-                className="w-full pl-11 pr-4 py-3.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-forest/20 focus:border-forest transition min-h-[44px]"
+                className="w-full pl-11 pr-10 py-3.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold transition min-h-[44px]"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
+              {search && (
+                <button
+                  onClick={() => { setSearch(""); searchRef.current?.focus(); }}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-gray-100 transition"
+                  aria-label="Effacer la recherche"
+                >
+                  <X className="w-4 h-4 text-gray-400" />
+                </button>
+              )}
             </div>
             <div className="flex gap-2 items-center">
               <SlidersHorizontal className="w-4 h-4 text-gray-400 shrink-0" />
               <select
-                className="bg-white border border-gray-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest/20 flex-1 sm:flex-none transition min-h-[44px]"
+                className="bg-white border border-gray-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold flex-1 sm:flex-none transition min-h-[44px]"
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
               >
@@ -124,6 +143,16 @@ function BoutiqueContent() {
                 {cat.label}
               </button>
             ))}
+            <button
+              onClick={() => setInStockOnly(!inStockOnly)}
+              className={`px-5 py-3 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 min-h-[44px] ml-auto ${
+                inStockOnly
+                  ? "bg-green-500 text-white shadow-md"
+                  : "bg-white text-gray-600 border border-gray-200 hover:border-green-300 hover:text-green-700 active:bg-gray-50"
+              }`}
+            >
+              En stock
+            </button>
           </div>
         </FadeIn>
 
