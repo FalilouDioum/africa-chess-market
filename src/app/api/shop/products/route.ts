@@ -30,12 +30,25 @@ export async function GET(req: NextRequest) {
     if (categorie) filter.categorie = { $regex: new RegExp(`^${categorie}$`, "i") };
     if (inStock === "1") filter.quantiteEnStock = { $gt: 0 };
     if (search) {
-      const pattern = accentInsensitivePattern(search);
-      filter.$or = [
-        { nom: { $regex: pattern, $options: "i" } },
-        { description: { $regex: pattern, $options: "i" } },
-        { codeArticle: { $regex: pattern, $options: "i" } },
-      ];
+      // Split into words — each word must match in at least one field (AND logic)
+      const words = search.split(/\s+/).filter(Boolean);
+      const wordFilters = words.map((word) => {
+        const pattern = accentInsensitivePattern(word);
+        return {
+          $or: [
+            { nom: { $regex: pattern, $options: "i" } },
+            { description: { $regex: pattern, $options: "i" } },
+            { codeArticle: { $regex: pattern, $options: "i" } },
+            { categorie: { $regex: pattern, $options: "i" } },
+            { fournisseur: { $regex: pattern, $options: "i" } },
+          ],
+        };
+      });
+      if (wordFilters.length === 1) {
+        Object.assign(filter, wordFilters[0]);
+      } else {
+        filter.$and = wordFilters;
+      }
     }
 
     // Single aggregation: get products with imageCount in one query
