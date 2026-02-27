@@ -17,7 +17,7 @@ interface Product {
   prixUnitaireUSD: number;
   quantiteEnStock: number;
   quantiteCommandee: number;
-  images: string[];
+  imageCount: number;
   fournisseur: string;
   statut: string;
 }
@@ -74,7 +74,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
     );
   }
 
-  const images = product.images?.length > 0 ? product.images : [];
+  const imageCount = product.imageCount || 0;
   const inStock = product.quantiteEnStock > 0;
 
   return (
@@ -88,23 +88,23 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
         {/* Galerie */}
         <div>
           <div className="relative aspect-square bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
-            {images.length > 0 ? (
+            {imageCount > 0 ? (
               <>
                 <img
-                  src={images[currentImg]}
+                  src={`/api/shop/images/${product._id}?idx=${currentImg}`}
                   alt={product.nom}
                   className="w-full h-full object-contain p-4"
                 />
-                {images.length > 1 && (
+                {imageCount > 1 && (
                   <>
                     <button
-                      onClick={() => setCurrentImg((prev) => (prev - 1 + images.length) % images.length)}
+                      onClick={() => setCurrentImg((prev) => (prev - 1 + imageCount) % imageCount)}
                       className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow transition"
                     >
                       <ChevronLeft className="w-5 h-5" />
                     </button>
                     <button
-                      onClick={() => setCurrentImg((prev) => (prev + 1) % images.length)}
+                      onClick={() => setCurrentImg((prev) => (prev + 1) % imageCount)}
                       className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow transition"
                     >
                       <ChevronRight className="w-5 h-5" />
@@ -125,9 +125,9 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
           </div>
 
           {/* Thumbnails */}
-          {images.length > 1 && (
+          {imageCount > 1 && (
             <div className="flex gap-2 mt-4 overflow-x-auto">
-              {images.map((img, i) => (
+              {Array.from({ length: imageCount }, (_, i) => (
                 <button
                   key={i}
                   onClick={() => setCurrentImg(i)}
@@ -135,7 +135,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                     i === currentImg ? "border-forest" : "border-gray-200 hover:border-gray-400"
                   }`}
                 >
-                  <img src={img} alt="" className="w-full h-full object-cover" />
+                  <img src={`/api/shop/images/${product._id}?idx=${i}`} alt="" className="w-full h-full object-cover" loading="lazy" />
                 </button>
               ))}
             </div>

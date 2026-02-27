@@ -16,31 +16,39 @@ const categories = [
 async function getFeaturedProducts() {
   try {
     await connectDB();
-    const products = await Product.find().sort({ numero: 1 }).limit(8).lean();
-    return JSON.parse(JSON.stringify(products));
+    const products = await Product.find().select("-images").sort({ numero: 1 }).limit(8).lean();
+    // Add imageCount for each product
+    const ids = products.map((p) => p._id);
+    const imgData = await Product.find({ _id: { $in: ids } }).select("images").lean();
+    const countMap = new Map(
+      imgData.map((p) => [
+        String(p._id),
+        ((p as Record<string, unknown>).images as string[] | undefined)?.length || 0,
+      ])
+    );
+    return JSON.parse(JSON.stringify(
+      products.map((p) => ({ ...p, imageCount: countMap.get(String(p._id)) || 0 }))
+    ));
   } catch (error) {
     console.error("Failed to fetch products:", error);
     return [];
   }
 }
 
-async function getCategoryImages() {
+async function getCategoryImageIds() {
   try {
     await connectDB();
-    const categoryImages: Record<string, string> = {};
+    const categoryImageIds: Record<string, string> = {};
     for (const cat of categories) {
       const product = await Product.findOne({
         categorie: { $regex: new RegExp(`^${cat.slug}$`, "i") },
         images: { $exists: true, $ne: [] },
-      }).select("images").lean();
-      if (product && (product as Record<string, unknown>).images) {
-        const images = (product as Record<string, unknown>).images as string[];
-        if (images.length > 0) {
-          categoryImages[cat.slug] = images[0];
-        }
+      }).select("_id").lean();
+      if (product) {
+        categoryImageIds[cat.slug] = String(product._id);
       }
     }
-    return categoryImages;
+    return categoryImageIds;
   } catch (error) {
     console.error("Failed to fetch category images:", error);
     return {};
@@ -50,9 +58,9 @@ async function getCategoryImages() {
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  const [products, categoryImages] = await Promise.all([
+  const [products, categoryImageIds] = await Promise.all([
     getFeaturedProducts(),
-    getCategoryImages(),
+    getCategoryImageIds(),
   ]);
 
   return (
@@ -119,10 +127,11 @@ export default async function HomePage() {
               >
                 {/* Background image */}
                 <div className="absolute inset-0 bg-white">
-                  {categoryImages[cat.slug] ? (
+                  {categoryImageIds[cat.slug] ? (
                     <img
-                      src={categoryImages[cat.slug]}
+                      src={`/api/shop/images/${categoryImageIds[cat.slug]}?idx=0`}
                       alt={cat.label}
+                      loading="lazy"
                       className="w-full h-full object-contain p-4 sm:p-6 group-hover:scale-110 transition-transform duration-500"
                     />
                   ) : (

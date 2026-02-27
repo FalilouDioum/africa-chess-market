@@ -10,7 +10,8 @@ interface Product {
   codeArticle: string;
   prixVenteCFA: number;
   quantiteEnStock: number;
-  images: string[];
+  images?: string[];
+  imageCount?: number;
 }
 
 function formatCFA(n: number) {
@@ -22,17 +23,28 @@ function getWhatsAppLink(product: Product) {
   return `https://wa.me/221771234455?text=${encodeURIComponent(msg)}`;
 }
 
+function getImageSrc(product: Product): string | null {
+  if (product.imageCount && product.imageCount > 0) {
+    return `/api/shop/images/${product._id}?idx=0`;
+  }
+  if (product.images && product.images.length > 0) {
+    return `/api/shop/images/${product._id}?idx=0`;
+  }
+  return null;
+}
+
 export default function ProductCard({ product }: { product: Product }) {
   const inStock = product.quantiteEnStock > 0;
-  const thumb = product.images?.[0];
+  const imgSrc = getImageSrc(product);
 
   return (
     <div className="group bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col">
       <Link href={`/boutique/${product._id}`} className="relative block aspect-square overflow-hidden bg-cream-dark">
-        {thumb ? (
+        {imgSrc ? (
           <img
-            src={thumb}
+            src={imgSrc}
             alt={product.nom}
+            loading="lazy"
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
         ) : (
