@@ -31,11 +31,13 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
+  const isHome = pathname === "/";
+
   return (
     <>
       <header
         className={`sticky top-0 z-50 text-white transition-all duration-500 ${
-          scrolled || open ? "bg-forest/95 backdrop-blur-xl shadow-lg border-b border-gold/20" : "bg-transparent border-b border-transparent"
+          !isHome || scrolled || open ? "bg-forest/95 backdrop-blur-xl shadow-lg border-b border-gold/20" : "bg-transparent border-b border-transparent"
         }`}
         style={{ paddingTop: "env(safe-area-inset-top)" }}
       >
