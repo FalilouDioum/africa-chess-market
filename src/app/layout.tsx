@@ -13,7 +13,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "Africa Chess Market - Boutique d'échecs en ligne",
-  description: "Achetez vos plateaux, pièces, pendules et accessoires d'échecs de qualité. Livraison au Sénégal et en Afrique. Petit Nihal Chess.",
+  description: "Achetez vos plateaux, pièces, pendules et accessoires d'échecs de qualité. Livraison au Sénégal et en Afrique.",
   keywords: "échecs, chess, Sénégal, Afrique, plateau, pièces, pendule, boutique",
   openGraph: {
     title: "Africa Chess Market - Matériel d'échecs premium en Afrique",

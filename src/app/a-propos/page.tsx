@@ -30,10 +30,10 @@ export default function AProposPage() {
           <FadeIn delay={100}>
             <div className="text-gray-600 space-y-5 leading-relaxed text-base sm:text-lg">
               <p>
-                <strong className="text-gray-900">Africa Chess Market</strong> est née de la passion de deux amis, <strong className="text-gray-900">Falilou</strong> et <strong className="text-gray-900">Sidy</strong>, unis par leur amour des échecs et leur vision commune : rendre le matériel d&apos;échecs de qualité accessible à tous en Afrique.
+                <strong className="text-gray-900">Africa Chess Market</strong> est née d&apos;une passion profonde pour les échecs et d&apos;une vision commune : rendre le matériel d&apos;échecs de qualité accessible à tous en Afrique.
               </p>
               <p>
-                Opérant sous la marque <strong className="text-gray-900">Petit Nihal Chess</strong>, notre entreprise s&apos;est donnée pour mission de fournir aux joueurs, clubs, écoles et fédérations africaines du matériel professionnel à des prix compétitifs.
+                Notre entreprise s&apos;est donnée pour mission de fournir aux joueurs, clubs, écoles et fédérations africaines du matériel professionnel à des prix compétitifs.
               </p>
               <p>
                 Nous importons directement auprès des meilleurs fabricants mondiaux pour garantir la qualité et proposer les meilleurs tarifs. Chaque pièce est lestée, chaque plateau est sélectionné avec soin, chaque pendule est testée avant expédition.
@@ -83,35 +83,6 @@ export default function AProposPage() {
                   </div>
                 );
               })}
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Les fondateurs */}
-      <section className="bg-white py-14 sm:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <FadeIn>
-            <div className="text-center mb-10 sm:mb-14">
-              <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">L&apos;équipe</span>
-              <h2 className="text-xl sm:text-3xl font-bold text-gray-900 mt-2">Les fondateurs</h2>
-              <div className="w-16 h-0.5 bg-gold mx-auto mt-4" />
-            </div>
-          </FadeIn>
-          <FadeIn animation="stagger-children">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-              {[
-                { name: "Falilou", role: "Co-fondateur & Directeur commercial", initial: "F", color: "bg-forest" },
-                { name: "Sidy", role: "Co-fondateur & Directeur des opérations", initial: "S", color: "bg-gold-dark" },
-              ].map((person) => (
-                <div key={person.name} className="bg-cream rounded-2xl p-8 sm:p-10 text-center border border-gold/10 hover:border-gold/30 shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 border-t-2 border-t-gold/40">
-                  <div className={`w-20 h-20 ${person.color} rounded-full flex items-center justify-center mx-auto mb-5 text-white text-2xl font-bold shadow-lg`}>
-                    {person.initial}
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900">{person.name}</h3>
-                  <p className="text-sm text-gray-500 mt-2">{person.role}</p>
-                </div>
-              ))}
             </div>
           </FadeIn>
         </div>

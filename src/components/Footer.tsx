@@ -79,7 +79,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Africa Chess Market SARL. Tous droits réservés.
           </p>
           <p className="text-xs text-gold/40 tracking-wider font-medium">
-            Petit Nihal Chess &mdash; Falilou & Sidy
+            Africa Chess Market
           </p>
         </div>
       </div>
