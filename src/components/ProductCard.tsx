@@ -1,6 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { Crown, ShoppingCart } from "lucide-react";
+import LazyImage from "@/components/LazyImage";
 
 interface Product {
   _id: string;
@@ -25,10 +25,10 @@ function getWhatsAppLink(product: Product) {
 
 function getImageSrc(product: Product): string | null {
   if (product.imageCount && product.imageCount > 0) {
-    return `/api/shop/images/${product._id}?idx=0`;
+    return `/api/shop/images/${product._id}?idx=0&w=400`;
   }
   if (product.images && product.images.length > 0) {
-    return `/api/shop/images/${product._id}?idx=0`;
+    return `/api/shop/images/${product._id}?idx=0&w=400`;
   }
   return null;
 }
@@ -41,10 +41,10 @@ export default function ProductCard({ product }: { product: Product }) {
     <div className="group bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-gold/30 flex flex-col hover:-translate-y-1">
       <Link href={`/boutique/${product._id}`} className="relative block aspect-square overflow-hidden bg-cream-dark">
         {imgSrc ? (
-          <img
+          <LazyImage
             src={imgSrc}
             alt={product.nom}
-            loading="lazy"
+            wrapperClassName="w-full h-full"
             className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 saturate-[0.85] group-hover:saturate-100"
           />
         ) : (

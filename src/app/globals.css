@@ -72,6 +72,12 @@ html {
   animation: shimmer 4s linear infinite;
 }
 
+/* Skeleton shimmer for lazy images */
+@keyframes skeletonShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
 /* Gold gradient line separator */
 .gold-gradient-line {
   height: 1px;

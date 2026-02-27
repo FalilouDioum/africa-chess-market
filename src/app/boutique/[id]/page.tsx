@@ -5,6 +5,7 @@ import { useEffect, useState, useCallback, use } from "react";
 import Link from "next/link";
 import { ArrowLeft, Crown, ShoppingCart, Truck, ShieldCheck, ChevronLeft, ChevronRight } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
+import LazyImage from "@/components/LazyImage";
 import FadeIn from "@/components/FadeIn";
 
 interface Product {
@@ -92,9 +93,10 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
           <div className="relative aspect-square bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
             {imageCount > 0 ? (
               <>
-                <img
+                <LazyImage
                   src={`/api/shop/images/${product._id}?idx=${currentImg}`}
                   alt={product.nom}
+                  wrapperClassName="w-full h-full"
                   className="w-full h-full object-contain p-4"
                 />
                 {imageCount > 1 && (
@@ -137,7 +139,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                     i === currentImg ? "border-gold shadow-sm" : "border-gray-200 hover:border-gold/50"
                   }`}
                 >
-                  <img src={`/api/shop/images/${product._id}?idx=${i}`} alt="" className="w-full h-full object-cover" loading="lazy" />
+                  <img src={`/api/shop/images/${product._id}?idx=${i}&w=100`} alt="" className="w-full h-full object-cover" loading="lazy" />
                 </button>
               ))}
             </div>
