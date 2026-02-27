@@ -3,7 +3,7 @@
 export default function WhatsAppButton() {
   return (
     <a
-      href="https://wa.me/221771234455?text=Bonjour%20Africa%20Chess%20Market%20!%20Je%20souhaite%20avoir%20des%20informations%20sur%20vos%20produits."
+      href="https://wa.me/221766090921?text=Bonjour%20Africa%20Chess%20Market%20!%20Je%20souhaite%20avoir%20des%20informations%20sur%20vos%20produits."
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 bg-green-500 hover:bg-green-600 active:bg-green-700 active:scale-95 text-white p-4 rounded-full shadow-2xl hover:shadow-green-500/30 transition-all min-w-[56px] min-h-[56px] flex items-center justify-center"

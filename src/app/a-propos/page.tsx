@@ -100,7 +100,7 @@ export default function AProposPage() {
                 <h2 className="text-xl sm:text-3xl font-bold mb-3">Envie de collaborer ?</h2>
                 <p className="text-white/60 mb-8 text-sm sm:text-base leading-relaxed">Nous travaillons avec les clubs, écoles et fédérations d&apos;échecs.</p>
                 <a
-                  href="https://wa.me/221771234455?text=Bonjour%20!%20Je%20souhaite%20discuter%20d'un%20partenariat."
+                  href="https://wa.me/221766090921?text=Bonjour%20!%20Je%20souhaite%20discuter%20d'un%20partenariat."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-gold hover:bg-gold-dark text-forest-dark font-bold px-8 py-4 rounded-xl transition hover:scale-105"

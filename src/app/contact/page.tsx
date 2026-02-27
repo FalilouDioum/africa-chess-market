@@ -30,7 +30,7 @@ export default function ContactPage() {
               <FadeIn animation="stagger-children">
               <div className="space-y-4 sm:space-y-5">
                 <a
-                  href="https://wa.me/221771234455"
+                  href="https://wa.me/221766090921"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-start gap-4 bg-green-50 p-5 sm:p-6 rounded-2xl border border-green-100 hover:shadow-lg transition-all duration-300 group"
@@ -40,7 +40,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900 group-hover:text-green-700 transition">WhatsApp Business</p>
-                    <p className="text-green-700 font-medium">+221 77 123 44 55</p>
+                    <p className="text-green-700 font-medium">+221 76 609 09 21</p>
                     <p className="text-xs text-gray-500 mt-1">Cliquez pour nous écrire directement</p>
                   </div>
                 </a>
@@ -146,7 +146,7 @@ function ContactFormButton() {
         const phone = (document.getElementById("contact-phone") as HTMLInputElement)?.value || "";
         const message = (document.getElementById("contact-message") as HTMLTextAreaElement)?.value || "";
         const text = `Bonjour Africa Chess Market !\n\nJe suis ${name}${phone ? ` (${phone})` : ""}.\n\n${message}`;
-        window.open(`https://wa.me/221771234455?text=${encodeURIComponent(text)}`, "_blank");
+        window.open(`https://wa.me/221766090921?text=${encodeURIComponent(text)}`, "_blank");
       }}
       className="w-full flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-3.5 rounded-xl transition text-sm hover:scale-[1.02]"
     >

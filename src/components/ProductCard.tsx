@@ -20,7 +20,7 @@ function formatCFA(n: number) {
 
 function getWhatsAppLink(product: Product) {
   const msg = `Bonjour Africa Chess Market !\n\nJe souhaite commander :\n\n🛒 ${product.nom}\n📝 ${product.description?.substring(0, 60) || ""}\n📦 Code : ${product.codeArticle}\n💰 Prix : ${formatCFA(product.prixVenteCFA)}\n\nMerci !`;
-  return `https://wa.me/221771234455?text=${encodeURIComponent(msg)}`;
+  return `https://wa.me/221766090921?text=${encodeURIComponent(msg)}`;
 }
 
 function getImageSrc(product: Product): string | null {

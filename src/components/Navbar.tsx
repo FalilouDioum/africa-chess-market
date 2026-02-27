@@ -67,7 +67,7 @@ export default function Navbar() {
                 </Link>
               ))}
               <a
-                href="https://wa.me/221771234455"
+                href="https://wa.me/221766090921"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ml-3 bg-green-500 hover:bg-green-600 text-white px-4 py-2.5 rounded-lg text-sm font-medium transition flex items-center gap-2 min-h-[44px]"
@@ -112,7 +112,7 @@ export default function Navbar() {
         </nav>
         <div className="px-5 pb-6">
           <a
-            href="https://wa.me/221771234455"
+            href="https://wa.me/221766090921"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 bg-green-500 active:bg-green-600 text-white px-5 py-4 rounded-2xl text-base font-semibold w-full min-h-[48px]"

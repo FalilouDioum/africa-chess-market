@@ -109,7 +109,7 @@ export default async function HomePage() {
                 Accédez à la boutique <ArrowRight className="w-4 h-4" />
               </Link>
               <a
-                href="https://wa.me/221771234455?text=Bonjour%20!%20Je%20souhaite%20en%20savoir%20plus%20sur%20vos%20produits."
+                href="https://wa.me/221766090921?text=Bonjour%20!%20Je%20souhaite%20en%20savoir%20plus%20sur%20vos%20produits."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-semibold px-6 py-3.5 sm:py-3 rounded-xl transition hover:scale-105 flex items-center justify-center gap-2 text-sm sm:text-base"
@@ -259,7 +259,7 @@ export default async function HomePage() {
                   Commandez dès maintenant et recevez votre matériel d&apos;échecs de qualité professionnelle.
                 </p>
                 <a
-                  href="https://wa.me/221771234455?text=Bonjour%20!%20Je%20souhaite%20passer%20commande."
+                  href="https://wa.me/221766090921?text=Bonjour%20!%20Je%20souhaite%20passer%20commande."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-gold hover:bg-gold-dark active:bg-gold-dark text-forest-dark font-bold px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(200,164,85,0.4)] text-base sm:text-lg"
