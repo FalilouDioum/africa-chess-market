@@ -54,9 +54,15 @@ function BoutiqueContent() {
     if (inStockOnly) params.set("inStock", "1");
     const url = "/api/shop/products" + (params.toString() ? "?" + params.toString() : "");
 
-    const res = await fetch(url);
-    const data = await res.json();
-    setProducts(data);
+    try {
+      const res = await fetch(url);
+      if (res.ok) {
+        const data = await res.json();
+        setProducts(data);
+      }
+    } catch {
+      // Silently fail — keep previous products
+    }
     setLoading(false);
   }, [filterCat, debouncedSearch, inStockOnly]);
 

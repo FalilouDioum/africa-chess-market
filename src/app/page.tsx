@@ -18,18 +18,19 @@ const categories = [
 async function getFeaturedProducts() {
   try {
     await connectDB();
-    const products = await Product.find().select("-images").sort({ numero: 1 }).limit(8).lean();
-    const ids = products.map((p) => p._id);
-    const imgData = await Product.find({ _id: { $in: ids } }).select("images").lean();
-    const countMap = new Map(
-      imgData.map((p) => [
-        String(p._id),
-        ((p as Record<string, unknown>).images as string[] | undefined)?.length || 0,
-      ])
-    );
-    return JSON.parse(JSON.stringify(
-      products.map((p) => ({ ...p, imageCount: countMap.get(String(p._id)) || 0 }))
-    ));
+    // Single aggregation instead of 2 queries
+    const products = await Product.aggregate([
+      { $sort: { numero: 1 } },
+      { $limit: 8 },
+      {
+        $project: {
+          numero: 1, nom: 1, categorie: 1, codeArticle: 1, description: 1,
+          quantiteEnStock: 1, prixVenteCFA: 1, prixCFA: 1, fournisseur: 1, statut: 1,
+          imageCount: { $cond: { if: { $isArray: "$images" }, then: { $size: "$images" }, else: 0 } },
+        },
+      },
+    ]);
+    return JSON.parse(JSON.stringify(products));
   } catch (error) {
     console.error("Failed to fetch products:", error);
     return [];
@@ -39,24 +40,32 @@ async function getFeaturedProducts() {
 async function getCategoryImageIds() {
   try {
     await connectDB();
-    const categoryImageIds: Record<string, string> = {};
-    for (const cat of categories) {
-      const product = await Product.findOne({
-        categorie: { $regex: new RegExp(`^${cat.slug}$`, "i") },
-        images: { $exists: true, $ne: [] },
-      }).select("_id").lean();
-      if (product) {
-        categoryImageIds[cat.slug] = String(product._id);
-      }
+    // Single aggregation instead of N+1 queries (was 5 separate queries)
+    const slugs = categories.map((c) => c.slug);
+    const results = await Product.aggregate([
+      {
+        $match: {
+          categorie: { $in: slugs.map((s) => new RegExp(`^${s}$`, "i")) },
+          images: { $exists: true, $not: { $size: 0 } },
+        },
+      },
+      { $group: { _id: "$categorie", productId: { $first: "$_id" } } },
+    ]);
+    const map: Record<string, string> = {};
+    for (const r of results) {
+      // Match back to original slug (case-insensitive)
+      const slug = slugs.find((s) => s.toLowerCase() === String(r._id).toLowerCase());
+      if (slug) map[slug] = String(r.productId);
     }
-    return categoryImageIds;
+    return map;
   } catch (error) {
     console.error("Failed to fetch category images:", error);
     return {};
   }
 }
 
-export const dynamic = "force-dynamic";
+// ISR: revalidate every 60s instead of force-dynamic
+export const revalidate = 60;
 
 export default async function HomePage() {
   const [products, categoryImageIds] = await Promise.all([

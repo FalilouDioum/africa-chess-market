@@ -66,7 +66,11 @@ export async function GET(req: NextRequest) {
       },
     ]);
 
-    return NextResponse.json(products);
+    return NextResponse.json(products, {
+      headers: {
+        "Cache-Control": "public, max-age=30, stale-while-revalidate=120",
+      },
+    });
   } catch (error) {
     console.error("API /shop/products error:", error);
     return NextResponse.json({ error: String(error) }, { status: 500 });
