@@ -4,7 +4,7 @@ import { connectDB } from "@/lib/mongodb";
 import Product from "@/models/Product";
 import ProductCard from "@/components/ProductCard";
 import FadeIn from "@/components/FadeIn";
-import { Crown, Truck, ShieldCheck, MessageCircle, ArrowRight, Search, ShoppingCart, Package } from "lucide-react";
+import { Crown, Truck, ShieldCheck, MessageCircle, ArrowRight } from "lucide-react";
 import LazyImage from "@/components/LazyImage";
 
 const categories = [
@@ -190,42 +190,6 @@ export default async function HomePage() {
               >
                 Voir tous les produits <ArrowRight className="w-4 h-4" />
               </Link>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Comment commander */}
-      <section className="bg-cream py-14 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <FadeIn>
-            <div className="text-center mb-10 sm:mb-14">
-              <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Processus</span>
-              <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mt-2">Comment commander ?</h2>
-              <div className="w-16 h-0.5 bg-gold mx-auto mt-4" />
-            </div>
-          </FadeIn>
-          <FadeIn animation="stagger-children">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 relative">
-              {/* Connecting line (desktop only) */}
-              <div className="hidden sm:block absolute top-[4.5rem] left-[16.67%] right-[16.67%] gold-gradient-line" />
-              {[
-                { icon: Search, step: "01", title: "Parcourez notre catalogue", desc: "Explorez notre sélection de plateaux, pièces, pendules et accessoires d'échecs." },
-                { icon: ShoppingCart, step: "02", title: "Commandez via WhatsApp", desc: "Cliquez sur le bouton Commander et envoyez-nous votre commande directement sur WhatsApp." },
-                { icon: Package, step: "03", title: "Recevez votre commande", desc: "Nous préparons et livrons votre matériel d'échecs à l'adresse de votre choix." },
-              ].map((item) => {
-                const Icon = item.icon;
-                return (
-                  <div key={item.step} className="relative bg-white rounded-2xl p-6 sm:p-10 text-center shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 border border-gold/10">
-                    <span className="text-7xl sm:text-8xl font-extrabold text-forest/[0.03] absolute top-2 right-4 sm:top-4 sm:right-6 leading-none">{item.step}</span>
-                    <div className="w-16 h-16 bg-gradient-to-br from-gold/20 to-gold/5 rounded-2xl flex items-center justify-center mx-auto mb-5 relative z-10 ring-4 ring-cream">
-                      <Icon className="w-8 h-8 text-gold" />
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-3">{item.title}</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
-                  </div>
-                );
-              })}
             </div>
           </FadeIn>
         </div>
