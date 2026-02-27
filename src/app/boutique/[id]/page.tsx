@@ -5,6 +5,7 @@ import { useEffect, useState, useCallback, use } from "react";
 import Link from "next/link";
 import { ArrowLeft, Crown, ShoppingCart, Truck, ShieldCheck, ChevronLeft, ChevronRight } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
+import FadeIn from "@/components/FadeIn";
 
 interface Product {
   _id: string;
@@ -86,6 +87,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
         {/* Galerie */}
+        <FadeIn animation="fade-in-scale">
         <div>
           <div className="relative aspect-square bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
             {imageCount > 0 ? (
@@ -141,8 +143,10 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
             </div>
           )}
         </div>
+        </FadeIn>
 
         {/* Détails */}
+        <FadeIn delay={150}>
         <div>
           <span className="bg-forest/10 text-forest text-xs font-medium px-3 py-1 rounded-full">
             {product.categorie}
@@ -208,18 +212,21 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
             </div>
           </div>
         </div>
+        </FadeIn>
       </div>
 
       {/* Produits similaires */}
       {similar.length > 0 && (
-        <div className="mt-10 sm:mt-16">
+        <FadeIn className="mt-10 sm:mt-16">
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Produits similaires</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
-            {similar.map((p) => (
-              <ProductCard key={p._id} product={p as never} />
-            ))}
-          </div>
-        </div>
+          <FadeIn animation="stagger-children">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
+              {similar.map((p) => (
+                <ProductCard key={p._id} product={p as never} />
+              ))}
+            </div>
+          </FadeIn>
+        </FadeIn>
       )}
     </div>
   );

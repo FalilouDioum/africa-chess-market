@@ -1,13 +1,14 @@
 "use client";
 
 import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
+import FadeIn from "@/components/FadeIn";
 
 export default function ContactPage() {
   return (
     <div>
       {/* Hero */}
       <section className="bg-forest py-10 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 hero-fade">
           <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Nous joindre</span>
           <h1 className="text-2xl sm:text-4xl font-bold text-white mt-2">Contactez-nous</h1>
           <div className="w-16 h-0.5 bg-gold mt-4" />
@@ -21,10 +22,12 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
             {/* Infos de contact */}
+            <FadeIn>
             <div>
               <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Informations</span>
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mt-2 mb-2">Nos coordonnées</h2>
               <div className="w-16 h-0.5 bg-gold mb-8" />
+              <FadeIn animation="stagger-children">
               <div className="space-y-4 sm:space-y-5">
                 <a
                   href="https://wa.me/221771234455"
@@ -73,9 +76,12 @@ export default function ContactPage() {
                   </div>
                 </div>
               </div>
+              </FadeIn>
             </div>
+            </FadeIn>
 
             {/* Formulaire WhatsApp */}
+            <FadeIn delay={150}>
             <div>
               <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Message</span>
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mt-2 mb-2">Envoyez-nous un message</h2>
@@ -122,6 +128,7 @@ export default function ContactPage() {
                 </form>
               </div>
             </div>
+            </FadeIn>
           </div>
         </div>
       </section>
