@@ -80,17 +80,21 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
   const inStock = product.quantiteEnStock > 0;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-12">
-      {/* Breadcrumb */}
-      <Link href="/boutique" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-forest active:text-forest mb-4 sm:mb-6 transition py-2.5 min-h-[44px]">
-        <ArrowLeft className="w-4 h-4" /> Retour à la boutique
-      </Link>
+    <div>
+      <div className="bg-cream">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-8">
+          <Link href="/boutique" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-forest active:text-forest transition py-2.5 min-h-[44px]">
+            <ArrowLeft className="w-4 h-4" /> Retour à la boutique
+          </Link>
+        </div>
+      </div>
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-12">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
         {/* Galerie */}
         <FadeIn animation="fade-in-scale">
         <div>
-          <div className="relative aspect-square bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
+          <div className="relative aspect-square bg-white rounded-2xl overflow-hidden border border-gold/10 shadow-[0_4px_20px_rgba(26,58,42,0.08)]">
             {imageCount > 0 ? (
               <>
                 <LazyImage
@@ -135,8 +139,8 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                 <button
                   key={i}
                   onClick={() => setCurrentImg(i)}
-                  className={`w-16 h-16 rounded-lg overflow-hidden border-2 shrink-0 transition ${
-                    i === currentImg ? "border-gold shadow-sm" : "border-gray-200 hover:border-gold/50"
+                  className={`w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden border-2 shrink-0 transition-all duration-300 ${
+                    i === currentImg ? "border-gold shadow-[0_0_12px_rgba(200,164,85,0.3)] scale-105" : "border-gray-200 hover:border-gold/50 opacity-60 hover:opacity-100"
                   }`}
                 >
                   <img src={`/api/shop/images/${product._id}?idx=${i}&w=100`} alt="" className="w-full h-full object-cover" loading="lazy" />
@@ -177,16 +181,21 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
           </p>
 
           {/* Prix */}
-          <div className="mt-4 sm:mt-6 bg-cream-dark rounded-xl sm:rounded-2xl p-4 sm:p-5 border-l-4 border-gold">
-            <div className="flex items-baseline gap-3">
-              <span className="text-2xl sm:text-3xl font-bold text-forest">
+          <div className="mt-4 sm:mt-6 bg-gradient-to-br from-cream-dark to-cream rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-gold/20 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-gold via-gold-light to-gold" />
+            <span className="text-xs text-gold font-medium tracking-widest uppercase">Prix</span>
+            <div className="flex items-baseline gap-3 mt-1">
+              <span className="text-2xl sm:text-4xl font-bold text-forest tabular-nums tracking-tight">
                 {product.prixVenteCFA ? formatCFA(product.prixVenteCFA) : "Sur demande"}
               </span>
             </div>
             {inStock ? (
-              <p className="text-green-600 text-sm font-medium mt-1">{product.quantiteEnStock} en stock</p>
+              <p className="text-green-600 text-sm font-medium mt-2 flex items-center gap-1.5">
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                {product.quantiteEnStock} en stock
+              </p>
             ) : (
-              <p className="text-red-500 text-sm font-medium mt-1">Actuellement indisponible</p>
+              <p className="text-red-500 text-sm font-medium mt-2">Actuellement indisponible</p>
             )}
           </div>
 
@@ -234,7 +243,11 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
       {/* Produits similaires */}
       {similar.length > 0 && (
         <FadeIn className="mt-10 sm:mt-16">
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Produits similaires</h2>
+          <div className="mb-6 sm:mb-8">
+            <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Vous aimerez aussi</span>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mt-2 tracking-tight">Produits similaires</h2>
+            <div className="w-16 h-0.5 bg-gold mt-4" />
+          </div>
           <FadeIn animation="stagger-children">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
               {similar.map((p) => (
@@ -244,6 +257,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
           </FadeIn>
         </FadeIn>
       )}
+      </div>
     </div>
   );
 }

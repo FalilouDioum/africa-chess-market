@@ -16,6 +16,21 @@ body {
   background: var(--color-cream);
   color: #1a1a1a;
   font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Hero background slow breathing */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-bg-animate {
+    animation: heroBreath 20s ease-in-out infinite;
+  }
+}
+
+@keyframes heroBreath {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
 }
 
 html {

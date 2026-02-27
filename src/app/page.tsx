@@ -82,23 +82,25 @@ export default async function HomePage() {
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8a455' fill-opacity='0.3'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }} />
         </div>
-        <div className="absolute inset-0 opacity-[0.12]">
-          <img src="/hero-chess.jpg" alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 opacity-25">
+          <img src="/hero-chess.jpg" alt="" className="w-full h-full object-cover hero-bg-animate" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-br from-forest-dark/40 via-transparent to-forest/60" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-20 sm:pt-52 pb-12 sm:pb-32">
+        <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/60 via-transparent to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-cream to-transparent" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-24 sm:pt-56 pb-16 sm:pb-36">
           <div className="max-w-3xl hero-fade">
             <div className="flex items-center gap-2 mb-4 sm:mb-6">
               <Crown className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
               <span className="text-gold text-xs sm:text-sm font-medium tracking-wider uppercase">Africa Chess Market</span>
             </div>
-            <h1 className="text-2xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+            <h1 className="text-3xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight">
               Découvrez le jeu des Rois
             </h1>
-            <p className="text-lg sm:text-3xl lg:text-4xl font-bold mt-1 sm:mt-2 gold-shimmer">
+            <p className="text-xl sm:text-4xl lg:text-5xl font-bold mt-1 sm:mt-3 gold-shimmer">
               au Sénégal
             </p>
-            <p className="mt-3 sm:mt-6 text-sm sm:text-lg text-white/70 max-w-xl leading-relaxed">
+            <p className="mt-4 sm:mt-8 text-sm sm:text-lg text-white/80 max-w-xl leading-relaxed tracking-wide">
               Une sélection de matériel d&apos;échecs professionnel. Plateaux, pièces, pendules et accessoires de qualité supérieure.
             </p>
             <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -122,12 +124,15 @@ export default async function HomePage() {
       </section>
 
       {/* Catégories */}
-      <section className="bg-cream py-14 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <section className="bg-cream py-14 sm:py-24 relative">
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: 'radial-gradient(circle at 20% 50%, var(--color-gold) 0%, transparent 50%), radial-gradient(circle at 80% 20%, var(--color-forest-light) 0%, transparent 50%)',
+        }} />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <FadeIn>
             <div className="text-center mb-10 sm:mb-14">
               <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Collection</span>
-              <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mt-2">Nos catégories</h2>
+              <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mt-2 tracking-tight">Nos catégories</h2>
               <div className="w-16 h-0.5 bg-gold mx-auto mt-4" />
             </div>
           </FadeIn>
@@ -173,7 +178,7 @@ export default async function HomePage() {
             <div className="flex items-end justify-between mb-10 sm:mb-14">
               <div>
                 <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Catalogue</span>
-                <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mt-2">Nos produits</h2>
+                <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mt-2 tracking-tight">Nos produits</h2>
                 <div className="w-16 h-0.5 bg-gold mt-4" />
               </div>
               <Link
@@ -206,6 +211,7 @@ export default async function HomePage() {
 
       {/* Pourquoi nous choisir */}
       <section className="bg-forest text-white py-14 sm:py-24 relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent" />
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8a455' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
@@ -215,7 +221,7 @@ export default async function HomePage() {
           <FadeIn>
             <div className="text-center mb-10 sm:mb-14">
               <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Nos engagements</span>
-              <h2 className="text-2xl sm:text-4xl font-bold mt-2">Pourquoi Africa Chess Market ?</h2>
+              <h2 className="text-2xl sm:text-4xl font-bold mt-2 tracking-tight">Pourquoi Africa Chess Market ?</h2>
               <div className="w-16 h-0.5 bg-gold mx-auto mt-4" />
             </div>
           </FadeIn>
@@ -254,7 +260,7 @@ export default async function HomePage() {
                 <div className="w-16 h-16 bg-gold/15 rounded-2xl flex items-center justify-center mx-auto mb-5">
                   <Crown className="w-9 h-9 text-gold" />
                 </div>
-                <h2 className="text-xl sm:text-3xl font-bold mb-3">Prêt à élever votre jeu ?</h2>
+                <h2 className="text-xl sm:text-3xl font-bold mb-3 tracking-tight">Prêt à élever votre jeu ?</h2>
                 <p className="text-white/60 max-w-md mx-auto mb-8 text-sm sm:text-base leading-relaxed">
                   Commandez dès maintenant et recevez votre matériel d&apos;échecs de qualité professionnelle.
                 </p>

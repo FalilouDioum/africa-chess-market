@@ -38,7 +38,8 @@ export default function ProductCard({ product }: { product: Product }) {
   const imgSrc = getImageSrc(product);
 
   return (
-    <div className="group bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-gold/30 flex flex-col hover:-translate-y-1">
+    <div className="group bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-sm hover:shadow-[0_8px_30px_rgba(26,58,42,0.12)] transition-all duration-500 border border-gray-100 hover:border-gold/40 flex flex-col hover:-translate-y-1.5 relative">
+      <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-gold/0 via-gold to-gold/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
       <Link href={`/boutique/${product._id}`} className="relative block aspect-square overflow-hidden bg-cream-dark">
         {imgSrc ? (
           <LazyImage
@@ -56,6 +57,7 @@ export default function ProductCard({ product }: { product: Product }) {
           <span className="w-1.5 h-1.5 bg-gold rounded-full" />
           {product.categorie}
         </span>
+        <div className="absolute inset-0 bg-gradient-to-t from-forest/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
         {!inStock && (
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/10 flex items-center justify-center backdrop-saturate-0">
             <span className="bg-white/90 text-gray-900 text-[10px] sm:text-xs font-semibold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full tracking-wide uppercase">
@@ -77,7 +79,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
         <div className="mt-2 sm:mt-3 flex items-end justify-between gap-2 sm:gap-3">
           <div className="min-w-0">
-            <p className="text-base sm:text-xl font-bold text-forest truncate tracking-tight">
+            <p className="text-base sm:text-xl font-bold text-forest truncate tracking-tight tabular-nums">
               {product.prixVenteCFA ? formatCFA(product.prixVenteCFA) : "Sur demande"}
             </p>
             {inStock && (
