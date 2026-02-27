@@ -96,7 +96,7 @@ export default function ContactPage() {
                     <input
                       type="text"
                       id="contact-name"
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-forest/20 focus:border-forest transition"
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-forest/20 focus:border-forest transition min-h-[44px]"
                       placeholder="Prénom et nom"
                     />
                   </div>
@@ -105,7 +105,7 @@ export default function ContactPage() {
                     <input
                       type="tel"
                       id="contact-phone"
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-forest/20 focus:border-forest transition"
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-forest/20 focus:border-forest transition min-h-[44px]"
                       placeholder="+221 7X XXX XX XX"
                     />
                   </div>
@@ -114,7 +114,7 @@ export default function ContactPage() {
                     <textarea
                       id="contact-message"
                       rows={4}
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-forest/20 focus:border-forest resize-none transition"
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-forest/20 focus:border-forest resize-none transition"
                       placeholder="Décrivez votre besoin..."
                     />
                   </div>

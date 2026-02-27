@@ -66,7 +66,7 @@ export default async function HomePage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative bg-forest overflow-hidden -mt-16 sm:-mt-20">
+      <section className="relative bg-forest overflow-hidden -mt-14 sm:-mt-20">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8a455' fill-opacity='0.3'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
@@ -75,19 +75,19 @@ export default async function HomePage() {
         <div className="absolute inset-0 opacity-[0.12]">
           <img src="/hero-chess.jpg" alt="" className="w-full h-full object-cover" />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-28 sm:pt-52 pb-16 sm:pb-32">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-20 sm:pt-52 pb-12 sm:pb-32">
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 mb-4 sm:mb-6">
               <Crown className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
               <span className="text-gold text-xs sm:text-sm font-medium tracking-wider uppercase">Africa Chess Market</span>
             </div>
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+            <h1 className="text-2xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
               Découvrez le jeu des Rois
             </h1>
-            <p className="text-xl sm:text-3xl lg:text-4xl font-bold text-gold mt-2">
+            <p className="text-lg sm:text-3xl lg:text-4xl font-bold text-gold mt-1 sm:mt-2">
               au Sénégal
             </p>
-            <p className="mt-4 sm:mt-6 text-base sm:text-lg text-white/70 max-w-xl leading-relaxed">
+            <p className="mt-3 sm:mt-6 text-sm sm:text-lg text-white/70 max-w-xl leading-relaxed">
               Une sélection de matériel d&apos;échecs professionnel. Plateaux, pièces, pendules et accessoires de qualité supérieure.
             </p>
             <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -123,7 +123,7 @@ export default async function HomePage() {
               <Link
                 key={cat.slug}
                 href={`/boutique?categorie=${encodeURIComponent(cat.slug)}`}
-                className="group relative rounded-2xl overflow-hidden shrink-0 w-40 sm:w-auto aspect-[3/4] sm:aspect-[3/4] shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="group relative rounded-2xl overflow-hidden shrink-0 w-32 sm:w-auto aspect-[3/4] sm:aspect-[3/4] shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
                 {/* Background image */}
                 <div className="absolute inset-0 bg-white">

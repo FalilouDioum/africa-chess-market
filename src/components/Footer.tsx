@@ -5,9 +5,9 @@ export default function Footer() {
   return (
     <footer className="bg-forest-dark text-white" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Brand */}
-          <div className="sm:col-span-2 lg:col-span-1">
+          <div className="col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3 mb-5">
               <Crown className="w-8 h-8 text-gold" />
               <div>

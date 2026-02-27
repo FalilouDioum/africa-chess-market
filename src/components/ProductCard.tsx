@@ -70,17 +70,17 @@ export default function ProductCard({ product }: { product: Product }) {
             {product.nom}
           </h3>
         </Link>
-        <p className="text-[11px] sm:text-xs text-gray-500 mt-1 line-clamp-2 flex-1 leading-relaxed">
+        <p className="text-xs sm:text-sm text-gray-500 mt-1 line-clamp-2 flex-1 leading-relaxed">
           {product.description}
         </p>
 
-        <div className="mt-2 sm:mt-3 flex items-end justify-between gap-1 sm:gap-2">
+        <div className="mt-2 sm:mt-3 flex items-end justify-between gap-2 sm:gap-3">
           <div className="min-w-0">
             <p className="text-sm sm:text-lg font-bold text-forest truncate">
               {product.prixVenteCFA ? formatCFA(product.prixVenteCFA) : "Sur demande"}
             </p>
             {inStock && (
-              <p className="text-[10px] sm:text-xs text-green-600 font-medium">{product.quantiteEnStock} en stock</p>
+              <p className="text-xs text-green-600 font-medium">{product.quantiteEnStock} en stock</p>
             )}
           </div>
           {inStock ? (
@@ -88,13 +88,13 @@ export default function ProductCard({ product }: { product: Product }) {
               href={getWhatsAppLink(product)}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-green-500 hover:bg-green-600 active:bg-green-700 text-white p-2 sm:p-2.5 rounded-lg sm:rounded-xl transition shrink-0"
+              className="bg-green-500 hover:bg-green-600 active:bg-green-700 text-white p-2.5 sm:p-3 rounded-xl transition shrink-0 min-w-[44px] min-h-[44px] flex items-center justify-center"
               title="Commander via WhatsApp"
             >
-              <ShoppingCart className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
             </a>
           ) : (
-            <span className="text-[10px] sm:text-xs text-gray-400 italic shrink-0">Indisponible</span>
+            <span className="text-xs text-gray-400 italic shrink-0">Indisponible</span>
           )}
         </div>
       </div>

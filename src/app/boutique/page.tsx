@@ -86,7 +86,7 @@ function BoutiqueContent() {
             <input
               type="text"
               placeholder="Rechercher un produit..."
-              className="w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-forest/20 focus:border-forest transition"
+              className="w-full pl-11 pr-4 py-3.5 bg-white border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-forest/20 focus:border-forest transition min-h-[44px]"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
@@ -94,7 +94,7 @@ function BoutiqueContent() {
           <div className="flex gap-2 items-center">
             <SlidersHorizontal className="w-4 h-4 text-gray-400 shrink-0" />
             <select
-              className="bg-white border border-gray-200 rounded-xl px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-forest/20 flex-1 sm:flex-none transition"
+              className="bg-white border border-gray-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-forest/20 flex-1 sm:flex-none transition min-h-[44px]"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
             >
@@ -111,10 +111,10 @@ function BoutiqueContent() {
             <button
               key={cat.slug}
               onClick={() => setFilterCat(cat.slug)}
-              className={`px-5 py-2.5 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 ${
+              className={`px-5 py-3 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 min-h-[44px] ${
                 filterCat === cat.slug
                   ? "bg-forest text-white shadow-md"
-                  : "bg-white text-gray-600 border border-gray-200 hover:border-gold hover:text-forest"
+                  : "bg-white text-gray-600 border border-gray-200 hover:border-gold hover:text-forest active:bg-gray-50"
               }`}
             >
               {cat.label}

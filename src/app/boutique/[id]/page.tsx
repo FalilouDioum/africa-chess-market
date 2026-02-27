@@ -80,7 +80,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-12">
       {/* Breadcrumb */}
-      <Link href="/boutique" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-forest active:text-forest mb-4 sm:mb-6 transition py-1">
+      <Link href="/boutique" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-forest active:text-forest mb-4 sm:mb-6 transition py-2.5 min-h-[44px]">
         <ArrowLeft className="w-4 h-4" /> Retour à la boutique
       </Link>
 
@@ -99,13 +99,13 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                   <>
                     <button
                       onClick={() => setCurrentImg((prev) => (prev - 1 + imageCount) % imageCount)}
-                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow transition"
+                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow transition min-w-[44px] min-h-[44px] flex items-center justify-center active:scale-95"
                     >
                       <ChevronLeft className="w-5 h-5" />
                     </button>
                     <button
                       onClick={() => setCurrentImg((prev) => (prev + 1) % imageCount)}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow transition"
+                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow transition min-w-[44px] min-h-[44px] flex items-center justify-center active:scale-95"
                     >
                       <ChevronRight className="w-5 h-5" />
                     </button>
