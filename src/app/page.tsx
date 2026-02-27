@@ -5,6 +5,7 @@ import Product from "@/models/Product";
 import ProductCard from "@/components/ProductCard";
 import FadeIn from "@/components/FadeIn";
 import { Crown, Truck, ShieldCheck, MessageCircle, ArrowRight, Search, ShoppingCart, Package } from "lucide-react";
+import LazyImage from "@/components/LazyImage";
 
 const categories = [
   { slug: "Chess board", label: "Plateaux", emoji: "♟", desc: "Vinyle, caoutchouc, bois" },
@@ -131,10 +132,10 @@ export default async function HomePage() {
                 >
                   <div className="absolute inset-0 bg-white">
                     {categoryImageIds[cat.slug] ? (
-                      <img
-                        src={`/api/shop/images/${categoryImageIds[cat.slug]}?idx=0`}
+                      <LazyImage
+                        src={`/api/shop/images/${categoryImageIds[cat.slug]}?idx=0&w=300`}
                         alt={cat.label}
-                        loading="lazy"
+                        wrapperClassName="w-full h-full"
                         className="w-full h-full object-contain p-4 sm:p-6 group-hover:scale-110 transition-transform duration-500"
                       />
                     ) : (
