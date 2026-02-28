@@ -21,6 +21,8 @@ interface Product {
   quantiteCommandee: number;
   imageCount: number;
   fournisseur: string;
+  promo: boolean;
+  prixPromoCFA: number;
   statut: string;
 }
 
@@ -179,14 +181,33 @@ export default function ProductDetailClient({ id }: { id: string }) {
           </p>
 
           {/* Prix */}
-          <div className="mt-3 sm:mt-5 bg-gradient-to-br from-cream-dark to-cream rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-gold/20 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-gold via-gold-light to-gold" />
-            <span className="text-xs text-gold font-medium tracking-widest uppercase">Prix</span>
-            <div className="flex items-baseline gap-3 mt-1">
-              <span className="text-2xl sm:text-4xl font-bold text-forest tabular-nums tracking-tight">
-                {product.prixVenteCFA ? formatCFA(product.prixVenteCFA) : "Sur demande"}
-              </span>
-            </div>
+          <div className={`mt-3 sm:mt-5 rounded-xl sm:rounded-2xl p-4 sm:p-5 relative overflow-hidden ${product.promo && product.prixPromoCFA ? "bg-gradient-to-br from-red-50 to-cream border border-red-200" : "bg-gradient-to-br from-cream-dark to-cream border border-gold/20"}`}>
+            <div className={`absolute top-0 left-0 w-1 h-full ${product.promo && product.prixPromoCFA ? "bg-gradient-to-b from-red-500 via-red-400 to-red-500" : "bg-gradient-to-b from-gold via-gold-light to-gold"}`} />
+            {product.promo && product.prixPromoCFA ? (
+              <>
+                <span className="text-xs text-red-500 font-medium tracking-widest uppercase">Promo</span>
+                <div className="flex items-baseline gap-3 mt-1">
+                  <span className="text-2xl sm:text-4xl font-bold text-red-600 tabular-nums tracking-tight">
+                    {formatCFA(product.prixPromoCFA)}
+                  </span>
+                  <span className="text-sm sm:text-lg text-gray-400 line-through tabular-nums">
+                    {formatCFA(product.prixVenteCFA)}
+                  </span>
+                </div>
+                <span className="inline-block mt-1 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                  -{Math.round(((product.prixVenteCFA - product.prixPromoCFA) / product.prixVenteCFA) * 100)}%
+                </span>
+              </>
+            ) : (
+              <>
+                <span className="text-xs text-gold font-medium tracking-widest uppercase">Prix</span>
+                <div className="flex items-baseline gap-3 mt-1">
+                  <span className="text-2xl sm:text-4xl font-bold text-forest tabular-nums tracking-tight">
+                    {product.prixVenteCFA ? formatCFA(product.prixVenteCFA) : "Sur demande"}
+                  </span>
+                </div>
+              </>
+            )}
             {inStock ? (
               <p className="text-green-600 text-sm font-medium mt-2 flex items-center gap-1.5">
                 <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />

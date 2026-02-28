@@ -16,6 +16,8 @@ export interface IProduct extends Document {
   numeroCommande: string;
   images: string[];
   fournisseur: string;
+  promo: boolean;
+  prixPromoCFA: number;
   statut: "en_commande" | "en_transit" | "en_stock" | "epuise";
   createdAt: Date;
   updatedAt: Date;
@@ -38,6 +40,8 @@ const ProductSchema = new Schema<IProduct>(
     numeroCommande: { type: String, default: "" },
     images: [{ type: String }],
     fournisseur: { type: String, default: "CNCHESS CO.,LTD" },
+    promo: { type: Boolean, default: false },
+    prixPromoCFA: { type: Number, default: 0 },
     statut: {
       type: String,
       enum: ["en_commande", "en_transit", "en_stock", "epuise"],

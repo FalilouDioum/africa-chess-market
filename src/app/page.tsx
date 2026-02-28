@@ -25,7 +25,7 @@ async function getFeaturedProducts() {
       {
         $project: {
           numero: 1, nom: 1, categorie: 1, codeArticle: 1, description: 1,
-          quantiteEnStock: 1, prixVenteCFA: 1, prixCFA: 1, fournisseur: 1, statut: 1,
+          quantiteEnStock: 1, prixVenteCFA: 1, prixCFA: 1, fournisseur: 1, statut: 1, promo: 1, prixPromoCFA: 1,
           imageCount: { $cond: { if: { $isArray: "$images" }, then: { $size: "$images" }, else: 0 } },
         },
       },
@@ -33,6 +33,27 @@ async function getFeaturedProducts() {
     return JSON.parse(JSON.stringify(products));
   } catch (error) {
     console.error("Failed to fetch products:", error);
+    return [];
+  }
+}
+
+async function getPromoProducts() {
+  try {
+    await connectDB();
+    const products = await Product.aggregate([
+      { $match: { promo: true, quantiteEnStock: { $gt: 0 } } },
+      { $sort: { updatedAt: -1 } },
+      { $limit: 8 },
+      {
+        $project: {
+          numero: 1, nom: 1, categorie: 1, codeArticle: 1, description: 1,
+          quantiteEnStock: 1, prixVenteCFA: 1, prixCFA: 1, statut: 1, promo: 1, prixPromoCFA: 1,
+          imageCount: { $cond: { if: { $isArray: "$images" }, then: { $size: "$images" }, else: 0 } },
+        },
+      },
+    ]);
+    return JSON.parse(JSON.stringify(products));
+  } catch {
     return [];
   }
 }
@@ -68,9 +89,10 @@ async function getCategoryImageIds() {
 export const revalidate = 60;
 
 export default async function HomePage() {
-  const [products, categoryImageIds] = await Promise.all([
+  const [products, categoryImageIds, promoProducts] = await Promise.all([
     getFeaturedProducts(),
     getCategoryImageIds(),
+    getPromoProducts(),
   ]);
 
   return (
@@ -122,6 +144,31 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Promotions */}
+      {promoProducts.length > 0 && (
+        <section className="bg-white py-14 sm:py-24 relative overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.03]" style={{
+            backgroundImage: 'radial-gradient(circle at 80% 50%, #ef4444 0%, transparent 50%)',
+          }} />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+            <FadeIn>
+              <div className="text-center mb-10 sm:mb-14">
+                <span className="text-red-500 text-xs sm:text-sm font-medium tracking-widest uppercase">Offres limitées</span>
+                <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mt-2 tracking-tight">Nos promotions</h2>
+                <div className="w-16 h-0.5 bg-red-500 mx-auto mt-4" />
+              </div>
+            </FadeIn>
+            <FadeIn animation="stagger-children">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
+                {promoProducts.map((product: Record<string, unknown>) => (
+                  <ProductCard key={String(product._id)} product={product as never} />
+                ))}
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+      )}
 
       {/* Catégories */}
       <section className="bg-cream py-14 sm:py-24 relative">

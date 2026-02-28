@@ -16,6 +16,8 @@ interface Product {
   prixCFA: number;
   quantiteEnStock: number;
   images: string[];
+  promo?: boolean;
+  prixPromoCFA?: number;
 }
 
 const categories = [

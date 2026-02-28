@@ -25,10 +25,12 @@ export async function GET(req: NextRequest) {
     const categorie = searchParams.get("categorie");
     const search = searchParams.get("search")?.trim();
     const inStock = searchParams.get("inStock");
+    const promo = searchParams.get("promo");
 
     const filter: Record<string, unknown> = {};
     if (categorie) filter.categorie = { $regex: new RegExp(`^${categorie}$`, "i") };
     if (inStock === "1") filter.quantiteEnStock = { $gt: 0 };
+    if (promo === "1") filter.promo = true;
     if (search) {
       // Split into words — each word must match in at least one field (AND logic)
       const words = search.split(/\s+/).filter(Boolean);
@@ -60,7 +62,7 @@ export async function GET(req: NextRequest) {
           numero: 1, nom: 1, categorie: 1, codeArticle: 1, description: 1,
           quantiteEnStock: 1, quantiteCommandee: 1,
           prixVenteCFA: 1, prixCFA: 1, prixUnitaireUSD: 1,
-          fournisseur: 1, statut: 1,
+          fournisseur: 1, statut: 1, promo: 1, prixPromoCFA: 1,
           imageCount: { $cond: { if: { $isArray: "$images" }, then: { $size: "$images" }, else: 0 } },
         },
       },

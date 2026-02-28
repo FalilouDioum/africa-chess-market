@@ -12,6 +12,8 @@ interface Product {
   quantiteEnStock: number;
   images?: string[];
   imageCount?: number;
+  promo?: boolean;
+  prixPromoCFA?: number;
 }
 
 function formatCFA(n: number) {
@@ -58,6 +60,11 @@ export default function ProductCard({ product }: { product: Product }) {
           {product.categorie}
         </span>
         <div className="absolute inset-0 bg-gradient-to-t from-forest/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+        {product.promo && product.prixPromoCFA ? (
+          <span className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-red-500 text-white text-[10px] sm:text-xs font-bold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full">
+            -{Math.round(((product.prixVenteCFA - product.prixPromoCFA) / product.prixVenteCFA) * 100)}%
+          </span>
+        ) : null}
         {!inStock && (
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/10 flex items-center justify-center backdrop-saturate-0">
             <span className="bg-white/90 text-gray-900 text-[10px] sm:text-xs font-semibold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full tracking-wide uppercase">
@@ -79,9 +86,20 @@ export default function ProductCard({ product }: { product: Product }) {
 
         <div className="mt-2 sm:mt-3 flex items-end justify-between gap-2 sm:gap-3">
           <div className="min-w-0">
-            <p className="text-base sm:text-xl font-bold text-forest truncate tracking-tight tabular-nums">
-              {product.prixVenteCFA ? formatCFA(product.prixVenteCFA) : "Sur demande"}
-            </p>
+            {product.promo && product.prixPromoCFA ? (
+              <>
+                <p className="text-base sm:text-xl font-bold text-red-600 truncate tracking-tight tabular-nums">
+                  {formatCFA(product.prixPromoCFA)}
+                </p>
+                <p className="text-xs text-gray-400 line-through tabular-nums">
+                  {formatCFA(product.prixVenteCFA)}
+                </p>
+              </>
+            ) : (
+              <p className="text-base sm:text-xl font-bold text-forest truncate tracking-tight tabular-nums">
+                {product.prixVenteCFA ? formatCFA(product.prixVenteCFA) : "Sur demande"}
+              </p>
+            )}
             {inStock && (
               <p className="text-xs text-green-600 font-medium">{product.quantiteEnStock} en stock</p>
             )}
