@@ -4,6 +4,7 @@ import { connectDB } from "@/lib/mongodb";
 import Product from "@/models/Product";
 import ProductCard from "@/components/ProductCard";
 import FadeIn from "@/components/FadeIn";
+import HeroSection from "@/components/HeroSection";
 import { Crown, Truck, ShieldCheck, MessageCircle, ArrowRight } from "lucide-react";
 import LazyImage from "@/components/LazyImage";
 
@@ -98,52 +99,7 @@ export default async function HomePage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative bg-forest overflow-hidden -mt-14 sm:-mt-20">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8a455' fill-opacity='0.3'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }} />
-        </div>
-        <div className="absolute inset-0 opacity-25">
-          <img src="/hero-chess.jpg" alt="" className="w-full h-full object-cover hero-bg-animate" />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-br from-forest-dark/40 via-transparent to-forest/60" />
-        <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/60 via-transparent to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-cream to-transparent" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-24 sm:pt-56 pb-16 sm:pb-36">
-          <div className="max-w-3xl hero-fade">
-            <div className="flex items-center gap-2 mb-4 sm:mb-6">
-              <Crown className="w-4 h-4 sm:w-5 sm:h-5 text-gold" />
-              <span className="text-gold text-xs sm:text-sm font-medium tracking-wider uppercase">Africa Chess Market</span>
-            </div>
-            <h1 className="text-3xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight">
-              Découvrez le jeu des Rois
-            </h1>
-            <p className="text-xl sm:text-4xl lg:text-5xl font-bold mt-1 sm:mt-3 gold-shimmer">
-              au Sénégal
-            </p>
-            <p className="mt-4 sm:mt-8 text-sm sm:text-lg text-white/80 max-w-xl leading-relaxed tracking-wide">
-              Une sélection de matériel d&apos;échecs professionnel. Plateaux, pièces, pendules et accessoires de qualité supérieure.
-            </p>
-            <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <Link
-                href="/boutique"
-                className="bg-gold hover:bg-gold-dark active:bg-gold-dark text-forest-dark font-semibold px-6 py-3.5 sm:py-3 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_25px_rgba(200,164,85,0.35)] flex items-center justify-center gap-2 text-sm sm:text-base"
-              >
-                Accédez à la boutique <ArrowRight className="w-4 h-4" />
-              </Link>
-              <a
-                href="https://wa.me/221766090921?text=Bonjour%20!%20Je%20souhaite%20en%20savoir%20plus%20sur%20vos%20produits."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-semibold px-6 py-3.5 sm:py-3 rounded-xl transition hover:scale-105 flex items-center justify-center gap-2 text-sm sm:text-base"
-              >
-                <MessageCircle className="w-4 h-4" /> Nous contacter
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* Promotions */}
       {promoProducts.length > 0 && (
