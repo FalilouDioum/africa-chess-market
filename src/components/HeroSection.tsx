@@ -18,9 +18,9 @@ const PARTICLES = Array.from({ length: 20 }, (_, i) => ({
 }));
 
 const STATS = [
-  { icon: ShieldCheck, label: "Qualité", value: "Matériel pro" },
-  { icon: Truck, label: "Livraison", value: "Tout le Sénégal" },
-  { icon: Clock, label: "Ouvert", value: "7j/7 · 08h-19h" },
+  { icon: ShieldCheck, label: "Qualité", value: "Pro" },
+  { icon: Truck, label: "Livraison", value: "Sénégal" },
+  { icon: Clock, label: "Ouvert", value: "7j/7" },
 ];
 
 const CHESS_PATTERN = `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8a455' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`;
