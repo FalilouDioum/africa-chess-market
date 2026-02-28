@@ -29,7 +29,7 @@ function formatCFA(n: number) {
 }
 
 function getWhatsAppLink(product: Product) {
-  const msg = `Bonjour Africa Chess Market !\n\nJe souhaite commander :\n\n🛒 ${product.nom}\n📝 ${product.description?.substring(0, 80) || ""}\n📦 Code : ${product.codeArticle}\n💰 Prix : ${formatCFA(product.prixVenteCFA)}\n\nMerci !`;
+  const msg = `Bonjour Africa Chess Market !\n\nJe souhaite commander :\n\n🛒 ${product.nom}\n📝 ${product.description?.substring(0, 80) || ""}\n💰 Prix : ${formatCFA(product.prixVenteCFA)}\n\nMerci !`;
   return `https://wa.me/221766090921?text=${encodeURIComponent(msg)}`;
 }
 
@@ -173,7 +173,6 @@ export default function ProductDetailClient({ id }: { id: string }) {
           <h1 className="text-xl sm:text-3xl font-bold text-gray-900 mt-2">
             {product.nom}
           </h1>
-          <p className="text-xs sm:text-sm text-gray-500 mt-1">Code : {product.codeArticle}</p>
 
           <p className="text-sm sm:text-base text-gray-600 mt-3 sm:mt-4 leading-relaxed">
             {product.description}
