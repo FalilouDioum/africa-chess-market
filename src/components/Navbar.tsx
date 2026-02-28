@@ -36,12 +36,12 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`sticky top-0 z-50 text-white transition-all duration-500 ${
+        className={`${isHome ? "fixed" : "sticky"} top-0 left-0 right-0 z-50 text-white transition-all duration-500 ${
           !isHome
-            ? "bg-forest border-b border-transparent"
+            ? "bg-forest"
             : scrolled || open
-              ? "bg-forest/95 backdrop-blur-xl shadow-lg border-b border-gold/20"
-              : "bg-transparent border-b border-transparent"
+              ? "bg-forest/95 backdrop-blur-xl shadow-lg"
+              : "bg-transparent"
         }`}
         style={{ paddingTop: "env(safe-area-inset-top)" }}
       >

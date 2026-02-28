@@ -57,7 +57,7 @@ export default function HeroSection() {
     <section
       ref={heroRef}
       onMouseMove={handleMouseMove}
-      className="relative bg-forest overflow-hidden -mt-14 sm:-mt-20 min-h-[100svh] flex items-end sm:items-center"
+      className="relative bg-forest overflow-hidden min-h-[100svh] flex items-end sm:items-center"
     >
       {/* ── Drifting chess pattern ── */}
       <div className="absolute inset-0 opacity-[0.06] overflow-hidden">
