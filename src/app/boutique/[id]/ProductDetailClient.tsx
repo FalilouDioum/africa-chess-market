@@ -231,7 +231,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
               <ShieldCheck className="w-5 h-5 text-gold mt-0.5 shrink-0" />
               <div>
                 <p className="font-medium text-gray-900 text-sm">Qualité professionnelle</p>
-                <p className="text-xs text-gray-500">Matériel importé de {product.fournisseur}</p>
+                <p className="text-xs text-gray-500">Matériel sélectionné avec soin par nos experts</p>
               </div>
             </div>
           </div>
