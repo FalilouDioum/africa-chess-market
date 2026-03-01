@@ -68,7 +68,7 @@ export default function HeroSection() {
 
       {/* ── Background image ── */}
       <div className="absolute inset-0 opacity-25">
-        <img src="/hero.jpg" alt="" className="w-full h-full object-contain hero-bg-animate" />
+        <img src="/hero.jpg" alt="" className="w-full h-full object-cover hero-bg-animate" />
       </div>
 
       {/* ── Floating golden particles ── */}
