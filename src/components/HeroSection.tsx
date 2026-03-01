@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { Crown, ArrowRight, MessageCircle, ShieldCheck, Truck, Clock } from "lucide-react";
 
@@ -29,20 +29,11 @@ const CHESS_PATTERN = `url("data:image/svg+xml,%3Csvg width='60' height='60' vie
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLElement>(null);
-  const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [revealed, setRevealed] = useState(false);
 
   useEffect(() => {
     const t = setTimeout(() => setRevealed(true), 100);
     return () => clearTimeout(t);
-  }, []);
-
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (!heroRef.current || window.innerWidth < 1024) return;
-    const rect = heroRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
-    const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
-    setOffset({ x: x * 18, y: y * 12 });
   }, []);
 
   /* reveal helper — staggered entrance via transition-delay */
@@ -56,7 +47,6 @@ export default function HeroSection() {
   return (
     <section
       ref={heroRef}
-      onMouseMove={handleMouseMove}
       className="relative bg-forest overflow-hidden min-h-[100svh] flex items-end sm:items-center"
     >
       {/* ── Drifting chess pattern ── */}
@@ -76,8 +66,8 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-r from-forest-dark/70 via-forest/30 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/50 via-transparent to-transparent" />
 
-      {/* ── Mobile-only background image ── */}
-      <div className="absolute inset-0 opacity-20 lg:opacity-0 transition-opacity duration-700">
+      {/* ── Background image ── */}
+      <div className="absolute inset-0 opacity-25">
         <img src="/hero.jpg" alt="" className="w-full h-full object-cover hero-bg-animate" />
       </div>
 
@@ -105,9 +95,7 @@ export default function HeroSection() {
 
       {/* ═══════════════════════ CONTENT ═══════════════════════ */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 w-full pt-24 sm:pt-32 pb-44 sm:pb-32 z-10">
-        <div className="flex flex-col lg:flex-row items-center lg:items-center gap-10 lg:gap-16">
-          {/* ── Left column: text ── */}
-          <div className="flex-1 max-w-2xl lg:max-w-xl">
+        <div className="max-w-2xl lg:max-w-3xl">
             {/* Badge */}
             <div {...reveal(0)}>
               <div className="inline-flex items-center gap-2.5 bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 mb-6 sm:mb-8">
@@ -192,58 +180,6 @@ export default function HeroSection() {
                 })}
               </div>
             </div>
-          </div>
-
-          {/* ── Right column: hero image (desktop only) ── */}
-          <div className="hidden lg:block flex-1 relative max-w-lg xl:max-w-xl">
-            {/* Pulsing glow behind image */}
-            <div className="absolute -inset-4 rounded-[2.5rem] hero-glow-ring" />
-
-            {/* Decorative floating frames */}
-            <div
-              className="absolute -top-8 -right-8 w-28 h-28 border border-gold/[0.15] rounded-3xl transition-transform duration-700 ease-out"
-              style={{
-                transform: `rotate(12deg) translate(${offset.x * 0.3}px, ${offset.y * 0.3}px)`,
-              }}
-            />
-            <div
-              className="absolute -bottom-6 -left-6 w-20 h-20 border border-gold/10 rounded-2xl transition-transform duration-700 ease-out"
-              style={{
-                transform: `rotate(-6deg) translate(${offset.x * 0.5}px, ${offset.y * 0.5}px)`,
-              }}
-            />
-
-            {/* Main image container */}
-            <div
-              className={`relative rounded-[2rem] overflow-hidden border-2 border-gold/20 shadow-2xl transition-all duration-700 ease-out ${
-                revealed ? "opacity-100 scale-100" : "opacity-0 scale-[0.92]"
-              }`}
-              style={{
-                transform: `translate(${offset.x}px, ${offset.y}px) scale(${revealed ? 1 : 0.92})`,
-                transitionDelay: "400ms",
-              }}
-            >
-              <img
-                src="/hero.jpg"
-                alt="Matériel d'échecs professionnel"
-                className="w-full aspect-[3/4] object-cover hero-bg-animate"
-              />
-              {/* Image gradients */}
-              <div className="absolute inset-0 bg-gradient-to-t from-forest/50 via-transparent to-forest/10" />
-              <div className="absolute inset-0 bg-gradient-to-br from-gold/[0.04] via-transparent to-transparent" />
-
-              {/* Bottom badge inside image */}
-              <div className="absolute bottom-4 left-4 right-4 bg-forest-dark/60 backdrop-blur-xl rounded-xl p-4 border border-white/10">
-                <p className="text-gold text-xs font-semibold tracking-wider uppercase flex items-center gap-1.5">
-                  <Crown className="w-3 h-3" />
-                  N°1 au Sénégal
-                </p>
-                <p className="text-white/60 text-[11px] mt-0.5">
-                  Matériel d&apos;échecs professionnel
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
