@@ -257,7 +257,7 @@ export default async function HomePage() {
           <FadeIn animation="fade-in-scale">
             <div className="relative bg-forest rounded-3xl p-8 sm:p-16 text-center text-white overflow-hidden">
               <div className="absolute inset-0 opacity-10">
-                <img src="/hero.jpeg" alt="" className="w-full h-full object-cover" />
+                <img src="/hero.jpg" alt="" className="w-full h-full object-cover" />
               </div>
               <div className="relative">
                 <div className="w-16 h-16 bg-gold/15 rounded-2xl flex items-center justify-center mx-auto mb-5">

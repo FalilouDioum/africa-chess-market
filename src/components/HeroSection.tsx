@@ -78,7 +78,7 @@ export default function HeroSection() {
 
       {/* ── Mobile-only background image ── */}
       <div className="absolute inset-0 opacity-20 lg:opacity-0 transition-opacity duration-700">
-        <img src="/hero.jpeg" alt="" className="w-full h-full object-cover hero-bg-animate" />
+        <img src="/hero.jpg" alt="" className="w-full h-full object-cover hero-bg-animate" />
       </div>
 
       {/* ── Floating golden particles ── */}
@@ -224,7 +224,7 @@ export default function HeroSection() {
               }}
             >
               <img
-                src="/hero.jpeg"
+                src="/hero.jpg"
                 alt="Matériel d'échecs professionnel"
                 className="w-full aspect-[3/4] object-cover hero-bg-animate"
               />
