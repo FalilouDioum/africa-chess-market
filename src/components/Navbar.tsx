@@ -50,9 +50,9 @@ export default function Navbar() {
             <Link href="/" className="flex items-center gap-2 sm:gap-3 shrink-0 min-h-[44px] items-center group">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/logo.png" alt="Africa Chess Market" className="h-9 sm:h-14 w-auto bg-white rounded-lg p-0.5 sm:p-1 transition-shadow duration-300 group-hover:shadow-[0_0_15px_rgba(200,164,85,0.4)]" />
-              <span className="hidden sm:flex flex-col leading-tight">
-                <span className="text-sm font-bold tracking-wide text-white">AFRICA CHESS</span>
-                <span className="text-[10px] font-semibold tracking-[0.2em] text-gold">MARKET</span>
+              <span className="flex flex-col leading-tight">
+                <span className="text-[11px] sm:text-sm font-bold tracking-wide text-white">AFRICA CHESS</span>
+                <span className="text-[8px] sm:text-[10px] font-semibold tracking-[0.2em] text-gold">MARKET</span>
               </span>
             </Link>
 
