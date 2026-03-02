@@ -41,7 +41,7 @@ export default function Navbar() {
             ? "bg-forest text-white"
             : scrolled || open
               ? "bg-forest/95 backdrop-blur-xl shadow-lg text-white"
-              : "bg-transparent opacity-0 pointer-events-none"
+              : "bg-transparent text-white"
         }`}
         style={{ paddingTop: "env(safe-area-inset-top)" }}
       >
