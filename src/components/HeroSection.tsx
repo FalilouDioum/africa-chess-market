@@ -103,7 +103,7 @@ export default function HeroSection() {
                   <Crown className="w-3.5 h-3.5 text-gold" />
                 </div>
                 <span className="text-gold text-xs sm:text-sm font-semibold tracking-[0.15em] uppercase">
-                  Africa Chess Market
+                  Plus qu&apos;un jeu &middot; Une école de vie
                 </span>
               </div>
             </div>
@@ -111,25 +111,33 @@ export default function HeroSection() {
             {/* Heading */}
             <div {...reveal(150)}>
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight">
-                Découvrez le
-                <br className="hidden sm:block" />
-                {" jeu des "}
-                <span className="text-gold">Rois</span>
+                Chaque coup
+                <br />
+                forge un{" "}
+                <span className="text-gold">esprit.</span>
               </h1>
             </div>
 
-            {/* Shimmer subtitle */}
+            {/* Staccato rhythm */}
             <div {...reveal(300)}>
-              <p className="text-2xl sm:text-4xl lg:text-5xl font-bold mt-2 sm:mt-3 gold-shimmer">
-                au Sénégal
+              <p className="mt-4 sm:mt-6 flex flex-wrap items-center gap-x-3 sm:gap-x-4 text-base sm:text-xl lg:text-2xl font-semibold text-white/50 tracking-wide">
+                <span>Patience.</span>
+                <span className="w-1 h-1 rounded-full bg-gold/60" />
+                <span>Anticipation.</span>
+                <span className="w-1 h-1 rounded-full bg-gold/60" />
+                <span className="gold-shimmer">Vision long terme.</span>
               </p>
             </div>
 
-            {/* Description */}
+            {/* Description — children + Senegal */}
             <div {...reveal(450)}>
-              <p className="mt-5 sm:mt-8 text-sm sm:text-lg text-white/70 max-w-lg leading-relaxed">
-                Matériel d&apos;échecs professionnel — plateaux, pièces lestées,
-                pendules digitales et accessoires de qualité supérieure.
+              <p className="mt-5 sm:mt-8 text-sm sm:text-lg text-white/70 max-w-xl leading-relaxed">
+                Les échecs forgent les qualités qui font la différence — à tout âge.
+                Offrez à vos enfants l&apos;outil des grands stratèges et construisez
+                leur avantage dès aujourd&apos;hui.
+              </p>
+              <p className="mt-3 text-xs sm:text-sm text-gold/80 font-medium tracking-wide">
+                Matériel professionnel &middot; Disponible au Sénégal
               </p>
             </div>
 
@@ -140,7 +148,7 @@ export default function HeroSection() {
                   href="/boutique"
                   className="group bg-gold hover:bg-gold-dark active:bg-gold-dark text-forest-dark font-bold px-7 py-4 rounded-2xl transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(200,164,85,0.4)] flex items-center justify-center gap-2.5 text-sm sm:text-base"
                 >
-                  Accédez à la boutique
+                  Découvrir la collection
                   <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
                 <a
