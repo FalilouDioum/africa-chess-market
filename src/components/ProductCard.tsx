@@ -38,10 +38,13 @@ function getImageSrc(product: Product): string | null {
 export default function ProductCard({ product }: { product: Product }) {
   const inStock = product.quantiteEnStock > 0;
   const imgSrc = getImageSrc(product);
+  const hasPromo = product.promo && product.prixPromoCFA;
 
   return (
     <div className="group bg-warm-50 rounded-xl sm:rounded-2xl overflow-hidden shadow-sm hover:shadow-[0_8px_30px_rgba(26,58,42,0.12)] transition-all duration-500 border border-warm-100 hover:border-gold/40 flex flex-col hover:-translate-y-1.5 relative">
       <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-gold/0 via-gold to-gold/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+
+      {/* Image */}
       <Link href={`/boutique/${product._id}`} className="relative block aspect-square overflow-hidden bg-cream-dark">
         {imgSrc ? (
           <LazyImage
@@ -60,9 +63,9 @@ export default function ProductCard({ product }: { product: Product }) {
           {product.categorie}
         </span>
         <div className="absolute inset-0 bg-gradient-to-t from-forest/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-        {product.promo && product.prixPromoCFA ? (
+        {hasPromo ? (
           <span className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-red-500 text-white text-[10px] sm:text-xs font-bold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full">
-            -{Math.round(((product.prixVenteCFA - product.prixPromoCFA) / product.prixVenteCFA) * 100)}%
+            -{Math.round(((product.prixVenteCFA - product.prixPromoCFA!) / product.prixVenteCFA) * 100)}%
           </span>
         ) : null}
         {!inStock && (
@@ -74,48 +77,55 @@ export default function ProductCard({ product }: { product: Product }) {
         )}
       </Link>
 
-      <div className="p-3 sm:p-4 flex-1 flex flex-col">
+      {/* Content */}
+      <div className="p-3.5 sm:p-5 flex-1 flex flex-col">
         <Link href={`/boutique/${product._id}`}>
-          <h3 className="font-semibold text-warm-900 group-hover:text-forest transition text-sm sm:text-base line-clamp-1">
+          <h3 className="font-semibold text-warm-900 group-hover:text-forest transition text-[13px] sm:text-base leading-snug line-clamp-2">
             {product.nom}
           </h3>
         </Link>
-        <p className="text-xs sm:text-sm text-warm-500 mt-1 line-clamp-2 flex-1 leading-relaxed">
+        <p className="text-[11px] sm:text-sm text-warm-500 mt-1.5 sm:mt-2 line-clamp-2 flex-1 leading-relaxed">
           {product.description}
         </p>
 
-        <div className="mt-2 sm:mt-3 flex items-end justify-between gap-2 sm:gap-3">
-          <div className="min-w-0">
-            {product.promo && product.prixPromoCFA ? (
-              <>
-                <p className="text-base sm:text-xl font-bold text-red-600 truncate tracking-tight tabular-nums">
-                  {formatCFA(product.prixPromoCFA)}
+        {/* Price section */}
+        <div className="mt-3 sm:mt-4 pt-3 sm:pt-3.5 border-t border-warm-200/60">
+          <div className="flex items-end justify-between gap-2">
+            <div className="min-w-0">
+              {hasPromo ? (
+                <>
+                  <p className="text-[15px] sm:text-xl font-bold text-red-600 truncate tracking-tight tabular-nums">
+                    {formatCFA(product.prixPromoCFA!)}
+                  </p>
+                  <p className="text-[10px] sm:text-xs text-warm-400 line-through tabular-nums mt-0.5">
+                    {formatCFA(product.prixVenteCFA)}
+                  </p>
+                </>
+              ) : (
+                <p className="text-[15px] sm:text-xl font-bold text-forest truncate tracking-tight tabular-nums">
+                  {product.prixVenteCFA ? formatCFA(product.prixVenteCFA) : "Sur demande"}
                 </p>
-                <p className="text-xs text-warm-400 line-through tabular-nums">
-                  {formatCFA(product.prixVenteCFA)}
-                </p>
-              </>
+              )}
+            </div>
+            {inStock ? (
+              <a
+                href={getWhatsAppLink(product)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-green-500 hover:bg-green-600 active:bg-green-700 text-white p-2.5 sm:p-3 rounded-xl transition shrink-0 min-w-[44px] min-h-[44px] flex items-center justify-center"
+                title="Commander via WhatsApp"
+              >
+                <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
+              </a>
             ) : (
-              <p className="text-base sm:text-xl font-bold text-forest truncate tracking-tight tabular-nums">
-                {product.prixVenteCFA ? formatCFA(product.prixVenteCFA) : "Sur demande"}
-              </p>
-            )}
-            {inStock && (
-              <p className="text-xs text-green-600 font-medium">{product.quantiteEnStock} en stock</p>
+              <span className="text-[10px] sm:text-xs text-warm-400 italic shrink-0">Indisponible</span>
             )}
           </div>
-          {inStock ? (
-            <a
-              href={getWhatsAppLink(product)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-green-500 hover:bg-green-600 active:bg-green-700 text-white p-2.5 sm:p-3 rounded-xl transition shrink-0 min-w-[44px] min-h-[44px] flex items-center justify-center"
-              title="Commander via WhatsApp"
-            >
-              <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
-            </a>
-          ) : (
-            <span className="text-xs text-warm-400 italic shrink-0">Indisponible</span>
+          {inStock && (
+            <p className="text-[10px] sm:text-xs text-green-600 font-medium mt-1.5 flex items-center gap-1">
+              <span className="w-1.5 h-1.5 bg-green-500 rounded-full inline-block" />
+              {product.quantiteEnStock} en stock
+            </p>
           )}
         </div>
       </div>
