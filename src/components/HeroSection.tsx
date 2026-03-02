@@ -133,8 +133,6 @@ export default function HeroSection() {
             <div {...reveal(450)}>
               <p className="mt-5 sm:mt-8 text-sm sm:text-lg text-white/70 max-w-xl leading-relaxed">
                 Les échecs forgent les qualités qui font la différence — à tout âge.
-                Offrez à vos enfants l&apos;outil des grands stratèges et construisez
-                leur avantage dès aujourd&apos;hui.
               </p>
               <p className="mt-3 text-xs sm:text-sm text-gold/80 font-medium tracking-wide">
                 Matériel professionnel &middot; Disponible au Sénégal
