@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { sendEvent } from "@/components/AnalyticsTracker";
 import Link from "next/link";
 import { ArrowLeft, Crown, ShoppingCart, Truck, ShieldCheck, ChevronLeft, ChevronRight } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
@@ -42,6 +43,15 @@ interface Props {
 
 export default function ProductDetailClient({ product, similar }: Props) {
   const [currentImg, setCurrentImg] = useState(0);
+
+  useEffect(() => {
+    sendEvent({
+      type: "product_view",
+      productId: product._id,
+      productName: product.nom,
+      category: product.categorie,
+    });
+  }, [product._id, product.nom, product.categorie]);
 
   const imageCount = product.imageCount || 0;
   const inStock = product.quantiteEnStock > 0;
@@ -191,6 +201,7 @@ export default function ProductDetailClient({ product, similar }: Props) {
               target="_blank"
               rel="noopener noreferrer"
               className="mt-3 sm:mt-5 w-full flex items-center justify-center gap-3 bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-bold py-3.5 sm:py-4 px-6 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(34,197,94,0.3)] text-base sm:text-lg"
+              onClick={() => sendEvent({ type: "whatsapp_click", productId: product._id, productName: product.nom, category: product.categorie })}
             >
               <ShoppingCart className="w-5 h-5" />
               Commander via WhatsApp

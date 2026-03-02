@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Crown, ShoppingCart } from "lucide-react";
 import LazyImage from "@/components/LazyImage";
+import TrackableWhatsAppLink from "@/components/TrackableWhatsAppLink";
 
 interface Product {
   _id: string;
@@ -108,15 +109,16 @@ export default function ProductCard({ product }: { product: Product }) {
               )}
             </div>
             {inStock ? (
-              <a
+              <TrackableWhatsAppLink
                 href={getWhatsAppLink(product)}
-                target="_blank"
-                rel="noopener noreferrer"
+                productId={product._id}
+                productName={product.nom}
+                category={product.categorie}
                 className="bg-green-500 hover:bg-green-600 active:bg-green-700 text-white p-2.5 sm:p-3 rounded-xl transition shrink-0 min-w-[44px] min-h-[44px] flex items-center justify-center"
                 title="Commander via WhatsApp"
               >
                 <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
-              </a>
+              </TrackableWhatsAppLink>
             ) : (
               <span className="text-[10px] sm:text-xs text-warm-400 italic shrink-0">Indisponible</span>
             )}

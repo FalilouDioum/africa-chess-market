@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
 import FadeIn from "@/components/FadeIn";
 import { Search, SlidersHorizontal, X } from "lucide-react";
+import { sendEvent } from "@/components/AnalyticsTracker";
 
 interface Product {
   _id: string;
@@ -76,6 +77,13 @@ function BoutiqueContent() {
     setFilterCat(catParam);
   }, [catParam]);
 
+  // Track search queries
+  useEffect(() => {
+    if (debouncedSearch.trim()) {
+      sendEvent({ type: "search", searchQuery: debouncedSearch.trim() });
+    }
+  }, [debouncedSearch]);
+
   const sorted = [...products].sort((a, b) => {
     if (sortBy === "prix_asc") return (a.prixVenteCFA || 0) - (b.prixVenteCFA || 0);
     if (sortBy === "prix_desc") return (b.prixVenteCFA || 0) - (a.prixVenteCFA || 0);
@@ -144,7 +152,7 @@ function BoutiqueContent() {
               {categories.map((cat) => (
                 <button
                   key={cat.slug}
-                  onClick={() => setFilterCat(cat.slug)}
+                  onClick={() => { setFilterCat(cat.slug); if (cat.slug) sendEvent({ type: "category_browse", category: cat.slug }); }}
                   className={`px-5 py-2.5 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 min-h-[40px] ${
                     filterCat === cat.slug
                       ? "bg-forest text-white shadow-md"

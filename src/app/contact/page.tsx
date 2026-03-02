@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { MessageCircle, Check, Loader2 } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
+import { sendEvent } from "@/components/AnalyticsTracker";
 
 export default function ContactPage() {
   const [nom, setNom] = useState("");
@@ -17,6 +18,8 @@ export default function ContactPage() {
     // Open WhatsApp immediately
     const text = `Bonjour Africa Chess Market !\n\nJe suis ${nom}${telephone ? ` (${telephone})` : ""}.\n\n${message}`;
     window.open(`https://wa.me/221766090921?text=${encodeURIComponent(text)}`, "_blank");
+
+    sendEvent({ type: "contact_form" });
 
     // Save to database in background
     setSending(true);
