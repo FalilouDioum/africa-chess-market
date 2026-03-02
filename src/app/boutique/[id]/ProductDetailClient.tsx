@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, Crown, ShoppingCart, Truck, ShieldCheck, ChevronLeft, ChevronRight } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
@@ -35,47 +35,13 @@ function getWhatsAppLink(product: Product) {
   return `https://wa.me/221766090921?text=${encodeURIComponent(msg)}`;
 }
 
-export default function ProductDetailClient({ id }: { id: string }) {
-  const [product, setProduct] = useState<Product | null>(null);
-  const [similar, setSimilar] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+interface Props {
+  product: Product;
+  similar: Product[];
+}
+
+export default function ProductDetailClient({ product, similar }: Props) {
   const [currentImg, setCurrentImg] = useState(0);
-
-  const fetchProduct = useCallback(async () => {
-    const res = await fetch(`/api/shop/products/${id}`);
-    if (res.ok) {
-      const data = await res.json();
-      setProduct(data);
-      // Fetch similar
-      const simRes = await fetch(`/api/shop/products?categorie=${encodeURIComponent(data.categorie)}`);
-      const simData = await simRes.json();
-      setSimilar(simData.filter((p: Product) => p._id !== data._id).slice(0, 4));
-    }
-    setLoading(false);
-  }, [id]);
-
-  useEffect(() => {
-    fetchProduct();
-  }, [fetchProduct]);
-
-  if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-forest" />
-      </div>
-    );
-  }
-
-  if (!product) {
-    return (
-      <div className="text-center py-20">
-        <p className="text-warm-500 text-lg">Produit non trouvé</p>
-        <Link href="/boutique" className="text-forest hover:underline mt-4 inline-block">
-          Retour à la boutique
-        </Link>
-      </div>
-    );
-  }
 
   const imageCount = product.imageCount || 0;
   const inStock = product.quantiteEnStock > 0;

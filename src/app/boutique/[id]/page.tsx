@@ -1,96 +1,131 @@
 import type { Metadata } from "next";
+import { cache } from "react";
+import mongoose from "mongoose";
 import { connectDB } from "@/lib/mongodb";
 import Product from "@/models/Product";
 import ProductDetailClient from "./ProductDetailClient";
+import { notFound } from "next/navigation";
 
 interface Props {
   params: Promise<{ id: string }>;
 }
 
+// ISR: revalidate every 60s
+export const revalidate = 60;
+
+/**
+ * Cached product fetch — React.cache deduplicates across
+ * generateMetadata + page render within the same request.
+ * Single aggregation: compute imageCount then strip images blob.
+ */
+const getProduct = cache(async (id: string) => {
+  if (!mongoose.Types.ObjectId.isValid(id)) return null;
+
+  await connectDB();
+  const results = await Product.aggregate([
+    { $match: { _id: new mongoose.Types.ObjectId(id) } },
+    {
+      $addFields: {
+        imageCount: { $cond: { if: { $isArray: "$images" }, then: { $size: "$images" }, else: 0 } },
+      },
+    },
+    { $project: { images: 0 } },
+  ]);
+
+  return results.length ? results[0] : null;
+});
+
+async function getSimilarProducts(categorie: string, excludeId: string) {
+  await connectDB();
+  const escaped = categorie.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return Product.aggregate([
+    {
+      $match: {
+        categorie: { $regex: new RegExp(`^${escaped}$`, "i") },
+        _id: { $ne: new mongoose.Types.ObjectId(excludeId) },
+      },
+    },
+    { $sort: { numero: 1 } },
+    { $limit: 4 },
+    {
+      $addFields: {
+        imageCount: { $cond: { if: { $isArray: "$images" }, then: { $size: "$images" }, else: 0 } },
+      },
+    },
+    { $project: { images: 0 } },
+  ]);
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
+  const product = await getProduct(id);
 
-  try {
-    await connectDB();
-    const product = await Product.findById(id).lean();
+  if (!product) return { title: "Produit non trouvé" };
 
-    if (!product) {
-      return { title: "Produit non trouvé" };
-    }
+  const description = product.description
+    ? product.description.substring(0, 160)
+    : `${product.nom} - ${product.categorie} disponible chez Africa Chess Market. Livraison au Sénégal et en Afrique de l'Ouest.`;
 
-    const p = product as { nom: string; description: string; categorie: string; prixVenteCFA: number; _id: { toString(): string } };
-    const title = p.nom;
-    const description = p.description
-      ? p.description.substring(0, 160)
-      : `${p.nom} - ${p.categorie} disponible chez Africa Chess Market. Livraison au Sénégal et en Afrique de l'Ouest.`;
-
-    return {
-      title,
+  return {
+    title: product.nom,
+    description,
+    openGraph: {
+      title: `${product.nom} - Africa Chess Market`,
       description,
-      openGraph: {
-        title: `${p.nom} - Africa Chess Market`,
-        description,
-        url: `/boutique/${p._id.toString()}`,
-        type: "website",
-        images: [{ url: `/api/shop/images/${p._id.toString()}?idx=0&w=800`, width: 800, height: 800, alt: p.nom }],
-      },
-      twitter: {
-        card: "summary_large_image",
-        title: p.nom,
-        description,
-        images: [`/api/shop/images/${p._id.toString()}?idx=0&w=800`],
-      },
-      alternates: {
-        canonical: `/boutique/${p._id.toString()}`,
-      },
-    };
-  } catch {
-    return { title: "Produit" };
-  }
+      url: `/boutique/${product._id}`,
+      type: "website",
+      images: [{ url: `/api/shop/images/${product._id}?idx=0&w=800`, width: 800, height: 800, alt: product.nom }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: product.nom,
+      description,
+      images: [`/api/shop/images/${product._id}?idx=0&w=800`],
+    },
+    alternates: {
+      canonical: `/boutique/${product._id}`,
+    },
+  };
 }
 
 export default async function ProductDetailPage({ params }: Props) {
   const { id } = await params;
 
-  let productJsonLd = null;
-  try {
-    await connectDB();
-    const product = await Product.findById(id).lean();
-    if (product) {
-      const p = product as { _id: { toString(): string }; nom: string; description: string; categorie: string; prixVenteCFA: number; quantiteEnStock: number; codeArticle: string };
-      productJsonLd = {
-        "@context": "https://schema.org",
-        "@type": "Product",
-        name: p.nom,
-        description: p.description,
-        sku: p.codeArticle,
-        category: p.categorie,
-        image: `https://africa-chess-market.com/api/shop/images/${p._id.toString()}?idx=0&w=800`,
-        url: `https://africa-chess-market.com/boutique/${p._id.toString()}`,
-        brand: { "@type": "Brand", name: "Africa Chess Market" },
-        offers: {
-          "@type": "Offer",
-          price: p.prixVenteCFA,
-          priceCurrency: "XOF",
-          availability: p.quantiteEnStock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
-          seller: { "@type": "Organization", name: "Africa Chess Market" },
-          url: `https://africa-chess-market.com/boutique/${p._id.toString()}`,
-        },
-      };
-    }
-  } catch {
-    // Silently fail — page will still render
-  }
+  const product = await getProduct(id);
+  if (!product) notFound();
+
+  const similar = await getSimilarProducts(product.categorie, id);
+
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.nom,
+    description: product.description,
+    sku: product.codeArticle,
+    category: product.categorie,
+    image: `https://africa-chess-market.com/api/shop/images/${product._id}?idx=0&w=800`,
+    url: `https://africa-chess-market.com/boutique/${product._id}`,
+    brand: { "@type": "Brand", name: "Africa Chess Market" },
+    offers: {
+      "@type": "Offer",
+      price: product.prixVenteCFA,
+      priceCurrency: "XOF",
+      availability: product.quantiteEnStock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+      seller: { "@type": "Organization", name: "Africa Chess Market" },
+      url: `https://africa-chess-market.com/boutique/${product._id}`,
+    },
+  };
 
   return (
     <>
-      {productJsonLd && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
-        />
-      )}
-      <ProductDetailClient id={id} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <ProductDetailClient
+        product={JSON.parse(JSON.stringify(product))}
+        similar={JSON.parse(JSON.stringify(similar))}
+      />
     </>
   );
 }
