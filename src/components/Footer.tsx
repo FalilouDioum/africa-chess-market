@@ -69,7 +69,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3 text-sm text-white/60">
                 <Mail className="w-4 h-4 mt-0.5 text-gold/70 shrink-0" />
-                <span>contact@africachessmarket.com</span>
+                <span>contact@africa-chess-market.com</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-white/60">
                 <MapPin className="w-4 h-4 mt-0.5 text-gold/70 shrink-0" />

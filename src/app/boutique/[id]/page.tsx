@@ -65,8 +65,8 @@ export default async function ProductDetailPage({ params }: Props) {
         description: p.description,
         sku: p.codeArticle,
         category: p.categorie,
-        image: `https://africachessmarket.com/api/shop/images/${p._id.toString()}?idx=0&w=800`,
-        url: `https://africachessmarket.com/boutique/${p._id.toString()}`,
+        image: `https://africa-chess-market.com/api/shop/images/${p._id.toString()}?idx=0&w=800`,
+        url: `https://africa-chess-market.com/boutique/${p._id.toString()}`,
         brand: { "@type": "Brand", name: "Africa Chess Market" },
         offers: {
           "@type": "Offer",
@@ -74,7 +74,7 @@ export default async function ProductDetailPage({ params }: Props) {
           priceCurrency: "XOF",
           availability: p.quantiteEnStock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
           seller: { "@type": "Organization", name: "Africa Chess Market" },
-          url: `https://africachessmarket.com/boutique/${p._id.toString()}`,
+          url: `https://africa-chess-market.com/boutique/${p._id.toString()}`,
         },
       };
     }

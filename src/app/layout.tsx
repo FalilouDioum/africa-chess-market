@@ -13,7 +13,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://africachessmarket.com"),
+  metadataBase: new URL("https://africa-chess-market.com"),
   title: {
     default: "Africa Chess Market - Boutique d'échecs en ligne au Sénégal",
     template: "%s | Africa Chess Market",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Africa Chess Market - Matériel d'échecs premium en Afrique",
     description: "Plateaux, pièces, pendules et accessoires d'échecs de qualité professionnelle. Livraison au Sénégal et en Afrique de l'Ouest.",
-    url: "https://africachessmarket.com",
+    url: "https://africa-chess-market.com",
     type: "website",
     locale: "fr_FR",
     siteName: "Africa Chess Market",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 },
   },
   alternates: {
-    canonical: "https://africachessmarket.com",
+    canonical: "https://africa-chess-market.com",
   },
 };
 
@@ -54,8 +54,8 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: "Africa Chess Market",
   legalName: "Africa Chess Market SARL",
-  url: "https://africachessmarket.com",
-  logo: "https://africachessmarket.com/logo.png",
+  url: "https://africa-chess-market.com",
+  logo: "https://africa-chess-market.com/logo.png",
   description: "Boutique d'échecs de référence en Afrique. Matériel de qualité professionnelle pour joueurs de tous niveaux.",
   address: {
     "@type": "PostalAddress",
@@ -75,7 +75,7 @@ const storeJsonLd = {
   "@context": "https://schema.org",
   "@type": "Store",
   name: "Africa Chess Market",
-  url: "https://africachessmarket.com/boutique",
+  url: "https://africa-chess-market.com/boutique",
   description: "Plateaux, pièces, pendules et accessoires d'échecs de qualité professionnelle.",
   currenciesAccepted: "XOF",
   paymentAccepted: "Cash, Mobile Money",

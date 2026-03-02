@@ -3,7 +3,7 @@ import { connectDB } from "@/lib/mongodb";
 import Product from "@/models/Product";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://africachessmarket.com";
+  const baseUrl = "https://africa-chess-market.com";
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [

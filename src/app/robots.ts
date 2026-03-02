@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/"],
       },
     ],
-    sitemap: "https://africachessmarket.com/sitemap.xml",
+    sitemap: "https://africa-chess-market.com/sitemap.xml",
   };
 }
