@@ -51,15 +51,15 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="bg-white py-14 sm:py-24">
+      <section className="bg-warm-50 py-14 sm:py-24">
         <div className="max-w-2xl mx-auto px-4 sm:px-6">
             <FadeIn>
             <div>
               <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Message</span>
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mt-2 mb-2">Envoyez-nous un message</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-warm-900 mt-2 mb-2">Envoyez-nous un message</h2>
               <div className="w-16 h-0.5 bg-gold mb-8" />
               <div className="bg-cream rounded-2xl border border-gold/10 p-6 sm:p-8 shadow-md hover:shadow-lg transition-shadow duration-300">
-                <p className="text-gray-500 text-sm mb-6 leading-relaxed">
+                <p className="text-warm-500 text-sm mb-6 leading-relaxed">
                   Remplissez le formulaire ci-dessous et nous vous répondrons via WhatsApp dans les plus brefs délais.
                 </p>
                 <form
@@ -70,32 +70,32 @@ export default function ContactPage() {
                   className="space-y-4"
                 >
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Votre nom</label>
+                    <label className="block text-sm font-medium text-warm-700 mb-1.5">Votre nom</label>
                     <input
                       type="text"
                       required
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold transition min-h-[44px]"
+                      className="w-full border border-warm-200 rounded-xl px-4 py-3.5 text-sm bg-warm-50 focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold transition min-h-[44px]"
                       placeholder="Prénom et nom"
                       value={nom}
                       onChange={(e) => setNom(e.target.value)}
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Votre téléphone</label>
+                    <label className="block text-sm font-medium text-warm-700 mb-1.5">Votre téléphone</label>
                     <input
                       type="tel"
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold transition min-h-[44px]"
+                      className="w-full border border-warm-200 rounded-xl px-4 py-3.5 text-sm bg-warm-50 focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold transition min-h-[44px]"
                       placeholder="+221 7X XXX XX XX"
                       value={telephone}
                       onChange={(e) => setTelephone(e.target.value)}
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Votre message</label>
+                    <label className="block text-sm font-medium text-warm-700 mb-1.5">Votre message</label>
                     <textarea
                       required
                       rows={4}
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold resize-none transition"
+                      className="w-full border border-warm-200 rounded-xl px-4 py-3.5 text-sm bg-warm-50 focus:outline-none focus:ring-2 focus:ring-gold/20 focus:border-gold resize-none transition"
                       placeholder="Décrivez votre besoin..."
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}

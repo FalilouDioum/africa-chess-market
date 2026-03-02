@@ -103,7 +103,7 @@ export default async function HomePage() {
 
       {/* Promotions */}
       {promoProducts.length > 0 && (
-        <section className="bg-white py-14 sm:py-24 relative overflow-hidden">
+        <section className="bg-warm-50 py-14 sm:py-24 relative overflow-hidden">
           <div className="absolute inset-0 opacity-[0.03]" style={{
             backgroundImage: 'radial-gradient(circle at 80% 50%, #ef4444 0%, transparent 50%)',
           }} />
@@ -111,7 +111,7 @@ export default async function HomePage() {
             <FadeIn>
               <div className="text-center mb-10 sm:mb-14">
                 <span className="text-red-500 text-xs sm:text-sm font-medium tracking-widest uppercase">Offres limitées</span>
-                <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mt-2 tracking-tight">Nos promotions</h2>
+                <h2 className="text-2xl sm:text-4xl font-bold text-warm-900 mt-2 tracking-tight">Nos promotions</h2>
                 <div className="w-16 h-0.5 bg-red-500 mx-auto mt-4" />
               </div>
             </FadeIn>
@@ -135,7 +135,7 @@ export default async function HomePage() {
           <FadeIn>
             <div className="text-center mb-10 sm:mb-14">
               <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Collection</span>
-              <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mt-2 tracking-tight">Nos catégories</h2>
+              <h2 className="text-2xl sm:text-4xl font-bold text-warm-900 mt-2 tracking-tight">Nos catégories</h2>
               <div className="w-16 h-0.5 bg-gold mx-auto mt-4" />
             </div>
           </FadeIn>
@@ -147,7 +147,7 @@ export default async function HomePage() {
                   href={`/boutique?categorie=${encodeURIComponent(cat.slug)}`}
                   className="group relative rounded-2xl overflow-hidden shrink-0 w-32 sm:w-auto aspect-[3/4] sm:aspect-[3/4] shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className="absolute inset-0 bg-white">
+                  <div className="absolute inset-0 bg-warm-50">
                     {categoryImageIds[cat.slug] ? (
                       <LazyImage
                         src={`/api/shop/images/${categoryImageIds[cat.slug]}?idx=0&w=300`}
@@ -175,13 +175,13 @@ export default async function HomePage() {
       </section>
 
       {/* Produits vedettes */}
-      <section className="bg-white py-14 sm:py-24">
+      <section className="bg-warm-50 py-14 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <FadeIn>
             <div className="flex items-end justify-between mb-10 sm:mb-14">
               <div>
                 <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Catalogue</span>
-                <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mt-2 tracking-tight">Nos produits</h2>
+                <h2 className="text-2xl sm:text-4xl font-bold text-warm-900 mt-2 tracking-tight">Nos produits</h2>
                 <div className="w-16 h-0.5 bg-gold mt-4" />
               </div>
               <Link

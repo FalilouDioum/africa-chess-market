@@ -69,7 +69,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
   if (!product) {
     return (
       <div className="text-center py-20">
-        <p className="text-gray-500 text-lg">Produit non trouvé</p>
+        <p className="text-warm-500 text-lg">Produit non trouvé</p>
         <Link href="/boutique" className="text-forest hover:underline mt-4 inline-block">
           Retour à la boutique
         </Link>
@@ -84,7 +84,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
     <div>
       <div className="bg-cream">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2 sm:py-4">
-          <Link href="/boutique" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-forest active:text-forest transition py-2.5 min-h-[44px]">
+          <Link href="/boutique" className="inline-flex items-center gap-2 text-sm text-warm-500 hover:text-forest active:text-forest transition py-2.5 min-h-[44px]">
             <ArrowLeft className="w-4 h-4" /> Retour à la boutique
           </Link>
         </div>
@@ -95,7 +95,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
         {/* Galerie */}
         <FadeIn animation="fade-in-scale">
         <div>
-          <div className="relative aspect-[4/3] sm:aspect-square bg-white rounded-2xl overflow-hidden border border-gold/10 shadow-[0_4px_20px_rgba(26,58,42,0.08)]">
+          <div className="relative aspect-[4/3] sm:aspect-square bg-warm-50 rounded-2xl overflow-hidden border border-gold/10 shadow-[0_4px_20px_rgba(26,58,42,0.08)]">
             {imageCount > 0 ? (
               <>
                 <LazyImage
@@ -141,7 +141,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
                   key={i}
                   onClick={() => setCurrentImg(i)}
                   className={`w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden border-2 shrink-0 transition-all duration-300 ${
-                    i === currentImg ? "border-gold shadow-[0_0_12px_rgba(200,164,85,0.3)] scale-105" : "border-gray-200 hover:border-gold/50 opacity-60 hover:opacity-100"
+                    i === currentImg ? "border-gold shadow-[0_0_12px_rgba(200,164,85,0.3)] scale-105" : "border-warm-200 hover:border-gold/50 opacity-60 hover:opacity-100"
                   }`}
                 >
                   <img src={`/api/shop/images/${product._id}?idx=${i}&w=100`} alt="" className="w-full h-full object-cover" loading="lazy" />
@@ -157,7 +157,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
                   key={i}
                   onClick={() => setCurrentImg(i)}
                   className={`h-2 rounded-full transition-all duration-300 ${
-                    i === currentImg ? "bg-gold w-6" : "bg-gray-300 w-2"
+                    i === currentImg ? "bg-gold w-6" : "bg-warm-300 w-2"
                   }`}
                 />
               ))}
@@ -172,11 +172,11 @@ export default function ProductDetailClient({ id }: { id: string }) {
           <span className="bg-forest/10 text-forest text-xs font-medium px-3 py-1 rounded-full">
             {product.categorie}
           </span>
-          <h1 className="text-xl sm:text-3xl font-bold text-gray-900 mt-2">
+          <h1 className="text-xl sm:text-3xl font-bold text-warm-900 mt-2">
             {product.nom}
           </h1>
 
-          <p className="text-sm sm:text-base text-gray-600 mt-3 sm:mt-4 leading-relaxed">
+          <p className="text-sm sm:text-base text-warm-600 mt-3 sm:mt-4 leading-relaxed">
             {product.description}
           </p>
 
@@ -190,7 +190,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
                   <span className="text-2xl sm:text-4xl font-bold text-red-600 tabular-nums tracking-tight">
                     {formatCFA(product.prixPromoCFA)}
                   </span>
-                  <span className="text-sm sm:text-lg text-gray-400 line-through tabular-nums">
+                  <span className="text-sm sm:text-lg text-warm-400 line-through tabular-nums">
                     {formatCFA(product.prixVenteCFA)}
                   </span>
                 </div>
@@ -232,7 +232,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
           ) : (
             <button
               disabled
-              className="mt-3 sm:mt-5 w-full flex items-center justify-center gap-3 bg-gray-300 text-gray-500 font-bold py-3.5 sm:py-4 px-6 rounded-xl cursor-not-allowed text-base sm:text-lg"
+              className="mt-3 sm:mt-5 w-full flex items-center justify-center gap-3 bg-warm-300 text-warm-500 font-bold py-3.5 sm:py-4 px-6 rounded-xl cursor-not-allowed text-base sm:text-lg"
             >
               Indisponible
             </button>
@@ -243,15 +243,15 @@ export default function ProductDetailClient({ id }: { id: string }) {
             <div className="flex items-start gap-3">
               <Truck className="w-5 h-5 text-gold mt-0.5 shrink-0" />
               <div>
-                <p className="font-medium text-gray-900 text-sm">Livraison disponible</p>
-                <p className="text-xs text-gray-500">Livraison dans tout le Sénégal et en Afrique de l&apos;Ouest</p>
+                <p className="font-medium text-warm-900 text-sm">Livraison disponible</p>
+                <p className="text-xs text-warm-500">Livraison dans tout le Sénégal et en Afrique de l&apos;Ouest</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
               <ShieldCheck className="w-5 h-5 text-gold mt-0.5 shrink-0" />
               <div>
-                <p className="font-medium text-gray-900 text-sm">Qualité professionnelle</p>
-                <p className="text-xs text-gray-500">Matériel sélectionné avec soin par nos experts</p>
+                <p className="font-medium text-warm-900 text-sm">Qualité professionnelle</p>
+                <p className="text-xs text-warm-500">Matériel sélectionné avec soin par nos experts</p>
               </div>
             </div>
           </div>
@@ -264,7 +264,7 @@ export default function ProductDetailClient({ id }: { id: string }) {
         <FadeIn className="mt-10 sm:mt-16">
           <div className="mb-6 sm:mb-8">
             <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Vous aimerez aussi</span>
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mt-2 tracking-tight">Produits similaires</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-warm-900 mt-2 tracking-tight">Produits similaires</h2>
             <div className="w-16 h-0.5 bg-gold mt-4" />
           </div>
           <FadeIn animation="stagger-children">

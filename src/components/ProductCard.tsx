@@ -40,7 +40,7 @@ export default function ProductCard({ product }: { product: Product }) {
   const imgSrc = getImageSrc(product);
 
   return (
-    <div className="group bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-sm hover:shadow-[0_8px_30px_rgba(26,58,42,0.12)] transition-all duration-500 border border-gray-100 hover:border-gold/40 flex flex-col hover:-translate-y-1.5 relative">
+    <div className="group bg-warm-50 rounded-xl sm:rounded-2xl overflow-hidden shadow-sm hover:shadow-[0_8px_30px_rgba(26,58,42,0.12)] transition-all duration-500 border border-warm-100 hover:border-gold/40 flex flex-col hover:-translate-y-1.5 relative">
       <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-gold/0 via-gold to-gold/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
       <Link href={`/boutique/${product._id}`} className="relative block aspect-square overflow-hidden bg-cream-dark">
         {imgSrc ? (
@@ -67,7 +67,7 @@ export default function ProductCard({ product }: { product: Product }) {
         ) : null}
         {!inStock && (
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/10 flex items-center justify-center backdrop-saturate-0">
-            <span className="bg-white/90 text-gray-900 text-[10px] sm:text-xs font-semibold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full tracking-wide uppercase">
+            <span className="bg-white/90 text-warm-900 text-[10px] sm:text-xs font-semibold px-3 py-1.5 sm:px-4 sm:py-2 rounded-full tracking-wide uppercase">
               Rupture de stock
             </span>
           </div>
@@ -76,11 +76,11 @@ export default function ProductCard({ product }: { product: Product }) {
 
       <div className="p-3 sm:p-4 flex-1 flex flex-col">
         <Link href={`/boutique/${product._id}`}>
-          <h3 className="font-semibold text-gray-900 group-hover:text-forest transition text-sm sm:text-base line-clamp-1">
+          <h3 className="font-semibold text-warm-900 group-hover:text-forest transition text-sm sm:text-base line-clamp-1">
             {product.nom}
           </h3>
         </Link>
-        <p className="text-xs sm:text-sm text-gray-500 mt-1 line-clamp-2 flex-1 leading-relaxed">
+        <p className="text-xs sm:text-sm text-warm-500 mt-1 line-clamp-2 flex-1 leading-relaxed">
           {product.description}
         </p>
 
@@ -91,7 +91,7 @@ export default function ProductCard({ product }: { product: Product }) {
                 <p className="text-base sm:text-xl font-bold text-red-600 truncate tracking-tight tabular-nums">
                   {formatCFA(product.prixPromoCFA)}
                 </p>
-                <p className="text-xs text-gray-400 line-through tabular-nums">
+                <p className="text-xs text-warm-400 line-through tabular-nums">
                   {formatCFA(product.prixVenteCFA)}
                 </p>
               </>
@@ -115,7 +115,7 @@ export default function ProductCard({ product }: { product: Product }) {
               <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
             </a>
           ) : (
-            <span className="text-xs text-gray-400 italic shrink-0">Indisponible</span>
+            <span className="text-xs text-warm-400 italic shrink-0">Indisponible</span>
           )}
         </div>
       </div>

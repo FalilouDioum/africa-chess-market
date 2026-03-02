@@ -104,32 +104,32 @@ function BoutiqueContent() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         <FadeIn>
-          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 sm:p-6 mb-8 sm:mb-10">
+          <div className="bg-warm-50 rounded-2xl border border-warm-100 shadow-sm p-4 sm:p-6 mb-8 sm:mb-10">
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-4 sm:mb-5">
               <div className="relative flex-1 sm:max-w-md">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-warm-400" />
                 <input
                   ref={searchRef}
                   type="text"
                   placeholder="Rechercher un produit..."
-                  className="w-full pl-11 pr-10 py-3.5 bg-cream border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold focus:bg-white transition min-h-[44px]"
+                  className="w-full pl-11 pr-10 py-3.5 bg-cream border border-warm-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold focus:bg-warm-50 transition min-h-[44px]"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />
                 {search && (
                   <button
                     onClick={() => { setSearch(""); searchRef.current?.focus(); }}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-gray-100 transition"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-warm-100 transition"
                     aria-label="Effacer la recherche"
                   >
-                    <X className="w-4 h-4 text-gray-400" />
+                    <X className="w-4 h-4 text-warm-400" />
                   </button>
                 )}
               </div>
               <div className="flex gap-2 items-center">
-                <SlidersHorizontal className="w-4 h-4 text-gray-400 shrink-0" />
+                <SlidersHorizontal className="w-4 h-4 text-warm-400 shrink-0" />
                 <select
-                  className="bg-cream border border-gray-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold focus:bg-white flex-1 sm:flex-none transition min-h-[44px]"
+                  className="bg-cream border border-warm-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold/30 focus:border-gold focus:bg-warm-50 flex-1 sm:flex-none transition min-h-[44px]"
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
                 >
@@ -148,7 +148,7 @@ function BoutiqueContent() {
                   className={`px-5 py-2.5 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 min-h-[40px] ${
                     filterCat === cat.slug
                       ? "bg-forest text-white shadow-md"
-                      : "bg-cream text-gray-600 hover:bg-cream-dark hover:text-forest active:bg-gray-200"
+                      : "bg-cream text-warm-600 hover:bg-cream-dark hover:text-forest active:bg-warm-200"
                   }`}
                 >
                   {cat.label}
@@ -159,7 +159,7 @@ function BoutiqueContent() {
                 className={`px-5 py-2.5 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-200 min-h-[40px] ml-auto ${
                   inStockOnly
                     ? "bg-green-500 text-white shadow-md"
-                    : "bg-cream text-gray-600 hover:bg-cream-dark hover:text-green-700 active:bg-gray-200"
+                    : "bg-cream text-warm-600 hover:bg-cream-dark hover:text-green-700 active:bg-warm-200"
                 }`}
               >
                 En stock
@@ -175,8 +175,8 @@ function BoutiqueContent() {
         ) : sorted.length === 0 ? (
           <FadeIn animation="fade-in">
             <div className="text-center py-20">
-              <p className="text-gray-500 text-lg">Aucun produit trouvé</p>
-              <p className="text-gray-400 text-sm mt-2">Essayez d&apos;élargir vos critères de recherche</p>
+              <p className="text-warm-500 text-lg">Aucun produit trouvé</p>
+              <p className="text-warm-400 text-sm mt-2">Essayez d&apos;élargir vos critères de recherche</p>
             </div>
           </FadeIn>
         ) : (

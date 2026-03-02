@@ -18,19 +18,19 @@ export default function AProposPage() {
       </section>
 
       {/* Notre histoire */}
-      <section className="bg-white py-14 sm:py-24">
+      <section className="bg-warm-50 py-14 sm:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <FadeIn>
             <div className="text-center mb-10 sm:mb-14">
               <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Genèse</span>
-              <h2 className="text-xl sm:text-3xl font-bold text-gray-900 mt-2">Notre histoire</h2>
+              <h2 className="text-xl sm:text-3xl font-bold text-warm-900 mt-2">Notre histoire</h2>
               <div className="w-16 h-0.5 bg-gold mx-auto mt-4" />
             </div>
           </FadeIn>
           <FadeIn delay={100}>
-            <div className="text-gray-600 space-y-5 leading-relaxed text-base sm:text-lg">
+            <div className="text-warm-600 space-y-5 leading-relaxed text-base sm:text-lg">
               <p>
-                <strong className="text-gray-900">Africa Chess Market</strong> est née d&apos;une passion profonde pour les échecs et d&apos;une vision commune : rendre le matériel d&apos;échecs de qualité accessible à tous en Afrique.
+                <strong className="text-warm-900">Africa Chess Market</strong> est née d&apos;une passion profonde pour les échecs et d&apos;une vision commune : rendre le matériel d&apos;échecs de qualité accessible à tous en Afrique.
               </p>
               <p>
                 Notre entreprise s&apos;est donnée pour mission de fournir aux joueurs, clubs, écoles et fédérations africaines du matériel professionnel à des prix compétitifs.
@@ -49,7 +49,7 @@ export default function AProposPage() {
           <FadeIn>
             <div className="text-center mb-10 sm:mb-14">
               <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Ce qui nous guide</span>
-              <h2 className="text-xl sm:text-3xl font-bold text-gray-900 mt-2">Nos valeurs</h2>
+              <h2 className="text-xl sm:text-3xl font-bold text-warm-900 mt-2">Nos valeurs</h2>
               <div className="w-16 h-0.5 bg-gold mx-auto mt-4" />
             </div>
           </FadeIn>
@@ -74,12 +74,12 @@ export default function AProposPage() {
               ].map((item) => {
                 const Icon = item.icon;
                 return (
-                  <div key={item.title} className="bg-white rounded-2xl p-6 sm:p-10 text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gold/10">
+                  <div key={item.title} className="bg-warm-50 rounded-2xl p-6 sm:p-10 text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gold/10">
                     <div className="w-16 h-16 bg-gradient-to-br from-gold/20 to-gold/5 rounded-2xl flex items-center justify-center mx-auto mb-5">
                       <Icon className="w-8 h-8 text-gold" />
                     </div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-3">{item.title}</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+                    <h3 className="text-lg font-bold text-warm-900 mb-3">{item.title}</h3>
+                    <p className="text-sm text-warm-500 leading-relaxed">{item.desc}</p>
                   </div>
                 );
               })}
