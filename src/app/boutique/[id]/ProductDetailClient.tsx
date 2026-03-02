@@ -59,15 +59,15 @@ export default function ProductDetailClient({ product, similar }: Props) {
   return (
     <div>
       <div className="bg-cream">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2 sm:py-4">
+        <div className="max-w-7xl 2xl:max-w-[1500px] mx-auto px-4 sm:px-6 xl:px-10 py-2 sm:py-4">
           <Link href="/boutique" className="inline-flex items-center gap-2 text-sm text-warm-500 hover:text-forest active:text-forest transition py-2.5 min-h-[44px]">
             <ArrowLeft className="w-4 h-4" /> Retour à la boutique
           </Link>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-8">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-10">
+      <div className="max-w-7xl 2xl:max-w-[1500px] mx-auto px-4 sm:px-6 xl:px-10 py-4 sm:py-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-10 xl:gap-14">
         {/* Galerie */}
         <FadeIn animation="fade-in-scale">
         <div>
@@ -148,7 +148,7 @@ export default function ProductDetailClient({ product, similar }: Props) {
           <span className="bg-forest/10 text-forest text-xs font-medium px-3 py-1 rounded-full">
             {product.categorie}
           </span>
-          <h1 className="text-xl sm:text-3xl font-bold text-warm-900 mt-2">
+          <h1 className="text-xl sm:text-3xl xl:text-4xl font-bold text-warm-900 mt-2">
             {product.nom}
           </h1>
 
@@ -245,7 +245,7 @@ export default function ProductDetailClient({ product, similar }: Props) {
             <div className="w-16 h-0.5 bg-gold mt-4" />
           </div>
           <FadeIn animation="stagger-children">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6">
               {similar.map((p) => (
                 <ProductCard key={p._id} product={p as never} />
               ))}

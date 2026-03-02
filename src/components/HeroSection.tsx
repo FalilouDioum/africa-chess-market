@@ -94,8 +94,8 @@ export default function HeroSection() {
       <div className="absolute bottom-0 left-0 right-0 h-32 sm:h-40 bg-gradient-to-t from-cream via-cream/60 to-transparent z-10" />
 
       {/* ═══════════════════════ CONTENT ═══════════════════════ */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 w-full pt-24 sm:pt-32 pb-44 sm:pb-32 z-10">
-        <div className="max-w-2xl lg:max-w-3xl">
+      <div className="relative max-w-7xl 2xl:max-w-[1500px] mx-auto px-4 sm:px-6 xl:px-10 w-full pt-24 sm:pt-32 pb-44 sm:pb-32 z-10">
+        <div className="max-w-2xl lg:max-w-3xl xl:max-w-4xl">
             {/* Badge */}
             <div {...reveal(0)}>
               <div className="inline-flex items-center gap-2.5 bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 mb-6 sm:mb-8">
@@ -110,7 +110,7 @@ export default function HeroSection() {
 
             {/* Heading */}
             <div {...reveal(150)}>
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight">
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[1.05] tracking-tight">
                 Chaque coup
                 <br />
                 forge un{" "}
@@ -120,7 +120,7 @@ export default function HeroSection() {
 
             {/* Staccato rhythm */}
             <div {...reveal(300)}>
-              <p className="mt-4 sm:mt-6 flex flex-wrap items-center gap-x-3 sm:gap-x-4 text-base sm:text-xl lg:text-2xl font-semibold text-white/50 tracking-wide">
+              <p className="mt-4 sm:mt-6 flex flex-wrap items-center gap-x-3 sm:gap-x-4 text-base sm:text-xl lg:text-2xl xl:text-3xl font-semibold text-white/50 tracking-wide">
                 <span>Patience.</span>
                 <span className="w-1 h-1 rounded-full bg-gold/60" />
                 <span>Anticipation.</span>
@@ -131,7 +131,7 @@ export default function HeroSection() {
 
             {/* Description — children + Senegal */}
             <div {...reveal(450)}>
-              <p className="mt-5 sm:mt-8 text-sm sm:text-lg text-white/70 max-w-xl leading-relaxed">
+              <p className="mt-5 sm:mt-8 text-sm sm:text-lg xl:text-xl text-white/70 max-w-xl xl:max-w-2xl leading-relaxed">
                 Les échecs forgent les qualités qui font la différence — à tout âge.
               </p>
               <p className="mt-3 text-xs sm:text-sm text-gold/80 font-medium tracking-wide">

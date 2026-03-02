@@ -107,16 +107,16 @@ export default async function HomePage() {
           <div className="absolute inset-0 opacity-[0.03]" style={{
             backgroundImage: 'radial-gradient(circle at 80% 50%, #ef4444 0%, transparent 50%)',
           }} />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="relative max-w-7xl 2xl:max-w-[1500px] mx-auto px-4 sm:px-6 xl:px-10">
             <FadeIn>
               <div className="text-center mb-10 sm:mb-14">
                 <span className="text-red-500 text-xs sm:text-sm font-medium tracking-widest uppercase">Offres limitées</span>
-                <h2 className="text-2xl sm:text-4xl font-bold text-warm-900 mt-2 tracking-tight">Nos promotions</h2>
+                <h2 className="text-2xl sm:text-4xl xl:text-5xl font-bold text-warm-900 mt-2 tracking-tight">Nos promotions</h2>
                 <div className="w-16 h-0.5 bg-red-500 mx-auto mt-4" />
               </div>
             </FadeIn>
             <FadeIn animation="stagger-children">
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6">
                 {promoProducts.map((product: Record<string, unknown>) => (
                   <ProductCard key={String(product._id)} product={product as never} />
                 ))}
@@ -131,11 +131,11 @@ export default async function HomePage() {
         <div className="absolute inset-0 opacity-[0.03]" style={{
           backgroundImage: 'radial-gradient(circle at 20% 50%, var(--color-gold) 0%, transparent 50%), radial-gradient(circle at 80% 20%, var(--color-forest-light) 0%, transparent 50%)',
         }} />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="relative max-w-7xl 2xl:max-w-[1500px] mx-auto px-4 sm:px-6 xl:px-10">
           <FadeIn>
             <div className="text-center mb-10 sm:mb-14">
               <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Collection</span>
-              <h2 className="text-2xl sm:text-4xl font-bold text-warm-900 mt-2 tracking-tight">Nos catégories</h2>
+              <h2 className="text-2xl sm:text-4xl xl:text-5xl font-bold text-warm-900 mt-2 tracking-tight">Nos catégories</h2>
               <div className="w-16 h-0.5 bg-gold mx-auto mt-4" />
             </div>
           </FadeIn>
@@ -176,12 +176,12 @@ export default async function HomePage() {
 
       {/* Produits vedettes */}
       <section className="bg-warm-50 py-14 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="max-w-7xl 2xl:max-w-[1500px] mx-auto px-4 sm:px-6 xl:px-10">
           <FadeIn>
             <div className="flex items-end justify-between mb-10 sm:mb-14">
               <div>
                 <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Catalogue</span>
-                <h2 className="text-2xl sm:text-4xl font-bold text-warm-900 mt-2 tracking-tight">Nos produits</h2>
+                <h2 className="text-2xl sm:text-4xl xl:text-5xl font-bold text-warm-900 mt-2 tracking-tight">Nos produits</h2>
                 <div className="w-16 h-0.5 bg-gold mt-4" />
               </div>
               <Link
@@ -193,7 +193,7 @@ export default async function HomePage() {
             </div>
           </FadeIn>
           <FadeIn animation="stagger-children">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6">
               {products.map((p: Record<string, unknown>) => (
                 <ProductCard key={p._id as string} product={p as never} />
               ))}
@@ -220,16 +220,16 @@ export default async function HomePage() {
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8a455' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }} />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="relative max-w-7xl 2xl:max-w-[1500px] mx-auto px-4 sm:px-6 xl:px-10">
           <FadeIn>
             <div className="text-center mb-10 sm:mb-14">
               <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Nos engagements</span>
-              <h2 className="text-2xl sm:text-4xl font-bold mt-2 tracking-tight">Pourquoi Africa Chess Market ?</h2>
+              <h2 className="text-2xl sm:text-4xl xl:text-5xl font-bold mt-2 tracking-tight">Pourquoi Africa Chess Market ?</h2>
               <div className="w-16 h-0.5 bg-gold mx-auto mt-4" />
             </div>
           </FadeIn>
           <FadeIn animation="stagger-children">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 xl:gap-10">
               {[
                 { icon: ShieldCheck, title: "Qualité garantie", desc: "Matériel professionnel importé directement des meilleurs fabricants. Pièces lestées, plateaux résistants." },
                 { icon: Truck, title: "Livraison rapide", desc: "Livraison dans tout le Sénégal et en Afrique de l'Ouest. Suivi de commande en temps réel." },
@@ -253,7 +253,7 @@ export default async function HomePage() {
 
       {/* CTA final */}
       <section className="bg-cream py-14 sm:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="max-w-4xl xl:max-w-5xl mx-auto px-4 sm:px-6 xl:px-10">
           <FadeIn animation="fade-in-scale">
             <div className="relative bg-forest rounded-3xl p-8 sm:p-16 text-center text-white overflow-hidden">
               <div className="absolute inset-0 opacity-10">

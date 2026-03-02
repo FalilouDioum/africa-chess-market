@@ -10,8 +10,8 @@ export default function Footer() {
         }} />
       </div>
       <div className="gold-gradient-line" />
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+      <div className="relative max-w-7xl 2xl:max-w-[1500px] mx-auto px-4 sm:px-6 xl:px-10 py-12 sm:py-20">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 xl:gap-12">
           {/* Brand */}
           <div className="col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3 mb-5">

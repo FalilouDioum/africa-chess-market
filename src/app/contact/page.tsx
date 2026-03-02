@@ -44,7 +44,7 @@ export default function ContactPage() {
     <div>
       {/* Hero */}
       <section className="bg-forest py-10 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 hero-fade">
+        <div className="max-w-7xl 2xl:max-w-[1500px] mx-auto px-4 sm:px-6 xl:px-10 hero-fade">
           <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Nous joindre</span>
           <h1 className="text-2xl sm:text-4xl font-bold text-white mt-2">Contactez-nous</h1>
           <div className="w-16 h-0.5 bg-gold mt-4" />
@@ -55,7 +55,7 @@ export default function ContactPage() {
       </section>
 
       <section className="bg-warm-50 py-14 sm:py-24">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6">
+        <div className="max-w-2xl xl:max-w-3xl mx-auto px-4 sm:px-6">
             <FadeIn>
             <div>
               <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Message</span>

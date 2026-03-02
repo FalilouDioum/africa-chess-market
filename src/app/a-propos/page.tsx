@@ -7,7 +7,7 @@ export default function AProposPage() {
     <div>
       {/* Hero */}
       <section className="bg-forest py-10 sm:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 hero-fade">
+        <div className="max-w-7xl 2xl:max-w-[1500px] mx-auto px-4 sm:px-6 xl:px-10 hero-fade">
           <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Notre histoire</span>
           <h1 className="text-2xl sm:text-4xl font-bold text-white mt-2">À propos d&apos;Africa Chess Market</h1>
           <div className="w-16 h-0.5 bg-gold mt-4" />
@@ -19,7 +19,7 @@ export default function AProposPage() {
 
       {/* Notre histoire */}
       <section className="bg-warm-50 py-14 sm:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="max-w-4xl xl:max-w-5xl mx-auto px-4 sm:px-6 xl:px-10">
           <FadeIn>
             <div className="text-center mb-10 sm:mb-14">
               <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Genèse</span>
@@ -45,7 +45,7 @@ export default function AProposPage() {
 
       {/* Valeurs */}
       <section className="bg-cream py-14 sm:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="max-w-7xl 2xl:max-w-[1500px] mx-auto px-4 sm:px-6 xl:px-10">
           <FadeIn>
             <div className="text-center mb-10 sm:mb-14">
               <span className="text-gold text-xs sm:text-sm font-medium tracking-widest uppercase">Ce qui nous guide</span>
@@ -90,7 +90,7 @@ export default function AProposPage() {
 
       {/* CTA */}
       <section className="bg-cream py-14 sm:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="max-w-4xl xl:max-w-5xl mx-auto px-4 sm:px-6 xl:px-10">
           <FadeIn animation="fade-in-scale">
             <div className="relative bg-forest rounded-3xl p-8 sm:p-16 text-center text-white overflow-hidden">
               <div className="relative">
