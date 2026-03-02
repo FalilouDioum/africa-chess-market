@@ -15,8 +15,8 @@ export async function POST(req: NextRequest) {
 
     await connectDB();
 
-    // Fire-and-forget: don't block response on DB write
-    AnalyticsEvent.create({
+    // MUST await on serverless — function terminates after response
+    await AnalyticsEvent.create({
       type,
       page: page.substring(0, 500),
       referrer: (referrer || "").substring(0, 1000),
@@ -27,10 +27,11 @@ export async function POST(req: NextRequest) {
       metadata,
       sessionId,
       userAgent: (userAgent || "").substring(0, 500),
-    }).catch(() => {});
+    });
 
     return NextResponse.json({ ok: true }, { status: 201 });
-  } catch {
+  } catch (error) {
+    console.error("Analytics event error:", error);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
 }

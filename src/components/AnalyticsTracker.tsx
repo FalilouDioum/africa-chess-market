@@ -35,18 +35,13 @@ export function sendEvent(payload: EventPayload) {
     userAgent: navigator.userAgent,
   };
 
-  const body = JSON.stringify(data);
-  const blob = new Blob([body], { type: "application/json" });
-  if (navigator.sendBeacon) {
-    navigator.sendBeacon("/api/analytics", blob);
-  } else {
-    fetch("/api/analytics", {
-      method: "POST",
-      body,
-      headers: { "Content-Type": "application/json" },
-      keepalive: true,
-    }).catch(() => {});
-  }
+  // Use fetch with keepalive as primary — more reliable than sendBeacon for JSON
+  fetch("/api/analytics", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: { "Content-Type": "application/json" },
+    keepalive: true,
+  }).catch(() => {});
 }
 
 export default function AnalyticsTracker() {
