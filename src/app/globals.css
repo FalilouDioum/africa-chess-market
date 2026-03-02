@@ -15,7 +15,7 @@
 body {
   background: var(--color-cream);
   color: #1a1a1a;
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-poppins), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
