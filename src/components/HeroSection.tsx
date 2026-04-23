@@ -151,7 +151,7 @@ export default function HeroSection() {
                   className="absolute inset-0 rounded-2xl bg-gradient-to-r from-gold/0 via-gold/30 to-gold/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
                 />
                 <span className="relative flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-xl bg-white/15 ring-1 ring-white/25">
-                  <Trophy className="w-5 h-5 sm:w-5.5 sm:h-5.5 text-white" />
+                  <Trophy className="w-5 h-5 sm:w-[22px] sm:h-[22px] text-white" />
                 </span>
                 <span className="relative flex flex-col items-start leading-tight">
                   <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-white/85 font-semibold">
