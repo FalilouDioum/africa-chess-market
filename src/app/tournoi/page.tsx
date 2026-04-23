@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   Trophy,
   Calendar,
@@ -23,14 +23,28 @@ export default function TournoiPage() {
   const [club, setClub] = useState("");
   const [categorie, setCategorie] = useState("Open");
   const [notes, setNotes] = useState("");
+  const [honeypot, setHoneypot] = useState(""); // bot trap — must stay empty
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const formLoadedAt = useRef<number>(Date.now());
+
+  // Rudimentary client-side sanity checks (server is authoritative)
+  const validateClient = (): string | null => {
+    if (!nom.trim() || nom.trim().length < 2) return "Merci d'indiquer votre nom complet.";
+    const phoneClean = telephone.replace(/[\s\-()]/g, "");
+    if (!/^\+?[0-9]{6,20}$/.test(phoneClean)) return "Numéro de téléphone invalide.";
+    if (email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim())) {
+      return "Email invalide.";
+    }
+    return null;
+  };
 
   const handleSubmit = async () => {
     setError(null);
-    if (!nom.trim() || !telephone.trim()) {
-      setError("Le nom et le téléphone sont obligatoires.");
+    const clientErr = validateClient();
+    if (clientErr) {
+      setError(clientErr);
       return;
     }
 
@@ -47,9 +61,24 @@ export default function TournoiPage() {
           club: club.trim(),
           categorie: categorie.trim(),
           notes: notes.trim(),
+          _hp: honeypot,
+          _ts: formLoadedAt.current,
         }),
       });
-      if (!res.ok) throw new Error("Erreur lors de l'envoi");
+
+      if (res.status === 429) {
+        setError("Trop de tentatives. Merci de réessayer dans quelques minutes.");
+        return;
+      }
+      if (res.status === 409) {
+        setError("Une inscription avec ce numéro vient d'être enregistrée.");
+        return;
+      }
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setError(data?.error || "Une erreur est survenue. Merci de réessayer.");
+        return;
+      }
 
       sendEvent({ type: "tournament_registration" });
       setSent(true);
@@ -59,6 +88,8 @@ export default function TournoiPage() {
       setFideId("");
       setClub("");
       setNotes("");
+      // reset timer so rapid re-submissions stay throttled
+      formLoadedAt.current = Date.now();
       setTimeout(() => setSent(false), 8000);
     } catch {
       setError("Une erreur est survenue. Merci de réessayer ou de nous contacter.");
@@ -206,6 +237,29 @@ export default function TournoiPage() {
                 }}
                 className="space-y-5"
               >
+                {/* Honeypot — invisible to humans, bots fill it */}
+                <div
+                  aria-hidden="true"
+                  style={{
+                    position: "absolute",
+                    left: "-9999px",
+                    top: "auto",
+                    width: 1,
+                    height: 1,
+                    overflow: "hidden",
+                  }}
+                >
+                  <label htmlFor="hp-field">Ne pas remplir</label>
+                  <input
+                    id="hp-field"
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                  />
+                </div>
                 {/* Nom + Téléphone (required) */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
