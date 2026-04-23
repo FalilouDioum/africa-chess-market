@@ -34,28 +34,6 @@ export default function TournoiPage() {
       return;
     }
 
-    // Prepare WhatsApp message
-    const parts = [
-      `🏆 Inscription au Tournoi Africa Chess Market`,
-      ``,
-      `👤 Nom : ${nom}`,
-      `📞 Téléphone : ${telephone}`,
-    ];
-    if (email.trim()) parts.push(`✉️ Email : ${email}`);
-    if (fideId.trim()) parts.push(`♟ ID FIDE : ${fideId}`);
-    if (club.trim()) parts.push(`🏛 Club : ${club}`);
-    parts.push(`🎯 Catégorie : ${categorie}`);
-    if (notes.trim()) parts.push(``, `📝 ${notes}`);
-
-    const text = parts.join("\n");
-    window.open(
-      `https://wa.me/221766090921?text=${encodeURIComponent(text)}`,
-      "_blank"
-    );
-
-    sendEvent({ type: "tournament_registration" });
-
-    // Save to database in background
     setSending(true);
     try {
       const res = await fetch("/api/inscription", {
@@ -71,19 +49,22 @@ export default function TournoiPage() {
           notes: notes.trim(),
         }),
       });
-      if (!res.ok) throw new Error();
+      if (!res.ok) throw new Error("Erreur lors de l'envoi");
+
+      sendEvent({ type: "tournament_registration" });
+      setSent(true);
+      setNom("");
+      setTelephone("");
+      setEmail("");
+      setFideId("");
+      setClub("");
+      setNotes("");
+      setTimeout(() => setSent(false), 8000);
     } catch {
-      // Silently fail — WhatsApp already opened
+      setError("Une erreur est survenue. Merci de réessayer ou de nous contacter.");
+    } finally {
+      setSending(false);
     }
-    setSending(false);
-    setSent(true);
-    setNom("");
-    setTelephone("");
-    setEmail("");
-    setFideId("");
-    setClub("");
-    setNotes("");
-    setTimeout(() => setSent(false), 6000);
   };
 
   return (
@@ -338,7 +319,7 @@ export default function TournoiPage() {
                 {sent && (
                   <div className="flex items-center gap-2 text-green-700 text-sm bg-green-50 px-4 py-3 rounded-xl border border-green-200">
                     <Check className="w-4 h-4 shrink-0" />
-                    Inscription envoyée ! Confirmez via WhatsApp pour finaliser.
+                    Inscription enregistrée ! Nous vous recontactons prochainement.
                   </div>
                 )}
 
@@ -362,8 +343,8 @@ export default function TournoiPage() {
                 </button>
 
                 <p className="text-xs text-warm-400 text-center">
-                  En soumettant, vous serez redirigé vers WhatsApp pour
-                  finaliser l&apos;inscription.
+                  Vos informations sont enregistrées de manière sécurisée.
+                  Nous vous contacterons pour confirmer votre inscription.
                 </p>
               </form>
             </div>
