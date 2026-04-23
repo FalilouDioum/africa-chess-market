@@ -1,7 +1,7 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface IAnalyticsEvent extends Document {
-  type: "page_view" | "product_view" | "whatsapp_click" | "category_browse" | "search" | "contact_form";
+  type: "page_view" | "product_view" | "whatsapp_click" | "category_browse" | "search" | "contact_form" | "tournament_registration";
   page: string;
   referrer: string;
   productId?: string;
@@ -20,7 +20,7 @@ const AnalyticsEventSchema = new Schema<IAnalyticsEvent>(
     type: {
       type: String,
       required: true,
-      enum: ["page_view", "product_view", "whatsapp_click", "category_browse", "search", "contact_form"],
+      enum: ["page_view", "product_view", "whatsapp_click", "category_browse", "search", "contact_form", "tournament_registration"],
       index: true,
     },
     page: { type: String, required: true },

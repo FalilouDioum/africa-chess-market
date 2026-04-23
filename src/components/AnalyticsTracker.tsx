@@ -14,7 +14,7 @@ function getSessionId(): string {
 }
 
 type EventPayload = {
-  type: "page_view" | "product_view" | "whatsapp_click" | "category_browse" | "search" | "contact_form";
+  type: "page_view" | "product_view" | "whatsapp_click" | "category_browse" | "search" | "contact_form" | "tournament_registration";
   page?: string;
   productId?: string;
   productName?: string;

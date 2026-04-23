@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
 import AnalyticsEvent from "@/models/AnalyticsEvent";
 
-const VALID_TYPES = ["page_view", "product_view", "whatsapp_click", "category_browse", "search", "contact_form"];
+const VALID_TYPES = ["page_view", "product_view", "whatsapp_click", "category_browse", "search", "contact_form", "tournament_registration"];
 
 export async function POST(req: NextRequest) {
   try {
