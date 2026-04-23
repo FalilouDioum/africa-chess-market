@@ -3,7 +3,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import { Crown, ArrowRight, MessageCircle, ShieldCheck, Truck, Clock } from "lucide-react";
+import { Crown, ArrowRight, MessageCircle, ShieldCheck, Truck, Clock, Trophy } from "lucide-react";
 
 /* ---------- static data ---------- */
 
@@ -139,9 +139,38 @@ export default function HeroSection() {
               </p>
             </div>
 
+            {/* Tournament CTA — event-specific, priority action */}
+            <div {...reveal(550)}>
+              <Link
+                href="/tournoi"
+                className="group relative mt-6 sm:mt-8 inline-flex items-center gap-3 sm:gap-4 bg-gradient-to-r from-[#ff8a4d] via-[#e85d2c] to-[#c24419] hover:from-[#ff9a5a] hover:via-[#ff6a3a] hover:to-[#d14d24] text-white font-bold px-5 sm:px-7 py-3.5 sm:py-4 rounded-2xl shadow-[0_8px_30px_rgba(232,93,44,0.35)] hover:shadow-[0_12px_40px_rgba(232,93,44,0.55)] hover:scale-[1.03] transition-all duration-300 ring-1 ring-white/20 hover:ring-white/30 overflow-hidden"
+              >
+                {/* Pulsing glow halo */}
+                <span
+                  aria-hidden
+                  className="absolute inset-0 rounded-2xl bg-gradient-to-r from-gold/0 via-gold/30 to-gold/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                />
+                <span className="relative flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-xl bg-white/15 ring-1 ring-white/25">
+                  <Trophy className="w-5 h-5 sm:w-5.5 sm:h-5.5 text-white" />
+                </span>
+                <span className="relative flex flex-col items-start leading-tight">
+                  <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-white/85 font-semibold">
+                    Tournoi officiel
+                  </span>
+                  <span className="text-sm sm:text-base font-bold">
+                    S&apos;inscrire au tournoi
+                  </span>
+                  <span className="text-[10px] sm:text-xs text-white/80 font-medium tracking-wide">
+                    03 Mai 2026 &middot; UCAD &middot; Dakar
+                  </span>
+                </span>
+                <ArrowRight className="relative w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </div>
+
             {/* CTAs */}
-            <div {...reveal(600)}>
-              <div className="mt-7 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <div {...reveal(700)}>
+              <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Link
                   href="/boutique"
                   className="group bg-gold hover:bg-gold-dark active:bg-gold-dark text-forest-dark font-bold px-7 py-4 rounded-2xl transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(200,164,85,0.4)] flex items-center justify-center gap-2.5 text-sm sm:text-base"
@@ -161,7 +190,7 @@ export default function HeroSection() {
             </div>
 
             {/* Trust badges */}
-            <div {...reveal(750)}>
+            <div {...reveal(850)}>
               <div className="mt-10 sm:mt-14 grid grid-cols-3 gap-2 sm:gap-4">
                 {STATS.map((stat) => {
                   const Icon = stat.icon;
